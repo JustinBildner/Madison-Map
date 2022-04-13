@@ -19,20 +19,19 @@ public interface IFrontendMadisonMap {
    * 
    * @param args An array of strings (points on the map) inputted from the webpage
    */
-  void DiplayShortestPath(String[] args);
+  void DisplayShortestPath(String[] vertexes);
 
   /**
    * Calls the back end minimumTree method and displays the shortest path between multiple nodes
    * 
    * @param args An array of strings (points on the map) inputted from the webpage
    */
-  void DisplayMinimumTree(String[] args);
+  void DisplayMinimumTree(String[] vertexes);
   
   /**
    * Main method that takes an array of strings from the website
    * 
    * @param args An array of strings (points on the map) inputted from the webpage
    */
-  void main(String[] args);
+  public static void main(String[] args);
 }
-
