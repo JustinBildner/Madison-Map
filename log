@@ -1,0 +1,148 @@
+Script started on Wed Apr 27 23:54:51 2022
+[0m[49m[39m[27m[24m[K
+[1A7[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m                                               [0m[49m[38;5;66m11:54:51 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[0m[49m[39m[27m[24m[21C[?2004h[?25l8[0m[38;5;31m[49m[39m[27m[24m[J[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:54:51 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?12l[?25h[?2004hggit status[?2004l
+On branch AlgorithmEngineer
+Your branch is ahead of 'origin/AlgorithmEngineer' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlog[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:54:55 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004hggit log -1[?2004l
+[?1h=[33mcommit f849164fbe173db49ab9f16849704871d98f2f45[m[33m ([m[1;36mHEAD -> [m[1;32mAlgorithmEngineer[m[33m)[m[m
+Author: Justin Bildner <justinbildner@Justins-MacBook-Pro.local>[m
+Date:   Wed Apr 27 23:53:23 2022 -0500[m
+[m
+    Made some changes[m
+[K[?1l>[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:54:59 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004hmmake ce lean[?2004lsscs  sscript log[?2004l
+Script started, output file is log
+[0m[49m[39m[27m[24m[K
+[1A7[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m                                               [0m[49m[38;5;66m11:54:51 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[0m[49m[39m[27m[24m[21C[?2004h[?25l8[0m[38;5;31m[49m[39m[27m[24m[J[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[38;5;66m[49m[39m[34D[?2004hlls[?2004l
+AlgorithmEngineerTests.java	IVertex.java
+Edge.java			MadisonMap.java
+GraphADT.java			Makefile
+GraphTest.java			Path.java
+IEdge.java			Project3_BN_blue.iml
+IFrontendMadisonMap.java	ShortestPath.java
+IMadisonMap.java		Vertex.java
+IMadisonMapBackend.java		junit5.jar
+IMapLoader.java			log
+IShortestPath.java		out
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:55:04 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004hmmake runTests[?2004l
+javac GraphADT.java
+javac IMadisonMap.java
+javac Edge.java
+javac IEdge.java
+javac Path.java
+Note: Path.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+javac IShortestPath.java
+javac ShortestPath.java
+javac IShortestPath.java
+javac MadisonMap.java
+Note: MadisonMap.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+javac -cp .:junit5.jar AlgorithmEngineerTests.java -Xlint
+java -jar junit5.jar --class-path . --scan-classpath -n AlgorithmEngineerTests
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mAlgorithmEngineerTests[0m [32m✔[0m
+[36m│     ├─[0m [34mtestNullPointException()[0m [32m✔[0m
+[36m│     ├─[0m [34mMinTreeA()[0m [32m✔[0m
+[36m│     ├─[0m [34mMinTreeC()[0m [32m✔[0m
+[36m│     ├─[0m [34mMinTreeG()[0m [32m✔[0m
+[36m│     └─[0m [34mMinTreeEdgeA()[0m [32m✔[0m
+[36m└─[0m [36mJUnit Vintage[0m [32m✔[0m
+
+Test run finished after 95 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         5 tests found           ]
+[         0 tests skipped         ]
+[         5 tests started         ]
+[         0 tests aborted         ]
+[         5 tests successful      ]
+[         0 tests failed          ]
+
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[20C[0m[49m[38;5;101m6s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;66m 11:55:15 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004heexit[?2004l
+
+Script done on Wed Apr 27 23:55:17 2022
+			Project3_BN_blue.iml
+IFrontendMadisonMap.java	ShortestPath.java
+IMadisonMap.java		Vertex.java
+IMadisonMapBackend.java		junit5.jar
+IMapLoader.java			log
+IShortestPath.java		out
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:55:04 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004hmmake runTests[?2004l
+javac GraphADT.java
+javac IMadisonMap.java
+javac Edge.java
+javac IEdge.java
+javac Path.java
+Note: Path.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+javac IShortestPath.java
+javac ShortestPath.java
+javac IShortestPath.java
+javac MadisonMap.java
+Note: MadisonMap.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+javac -cp .:junit5.jar AlgorithmEngineerTests.java -Xlint
+java -jar junit5.jar --class-path . --scan-classpath -n AlgorithmEngineerTests
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mAlgorithmEngineerTests[0m [32m✔[0m
+[36m│     ├─[0m [34mtestNullPointException()[0m [32m✔[0m
+[36m│     ├─[0m [34mMinTreeA()[0m [32m✔[0m
+[36m│     ├─[0m [34mMinTreeC()[0m [32m✔[0m
+[36m│     ├─[0m [34mMinTreeG()[0m [32m✔[0m
+[36m│     └─[0m [34mMinTreeEdgeA()[0m [32m✔[0m
+[36m└─[0m [36mJUnit Vintage[0m [32m✔[0m
+
+Test run finished after 95 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         5 tests found           ]
+[         0 tests skipped         ]
+[         5 tests started         ]
+[         0 tests aborted         ]
+[         5 tests successful      ]
+[         0 tests failed          ]
+
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[20C[0m[49m[38;5;101m6s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;66m 11:55:15 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004heexit[?2004l
+
+Script done, output file is log
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[19C[0m[49m[38;5;101m26s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;66m 11:55:17 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004hlls[?2004l
+AlgorithmEngineerTests.class	IVertex.class
+AlgorithmEngineerTests.java	IVertex.java
+Edge.class			MadisonMap.class
+Edge.java			MadisonMap.java
+GraphADT.class			Makefile
+GraphADT.java			Path.class
+GraphTest.java			Path.java
+IEdge.class			Project3_BN_blue.iml
+IEdge.java			ShortestPath.class
+IFrontendMadisonMap.java	ShortestPath.java
+IMadisonMap.class		Vertex.class
+IMadisonMap.java		Vertex.java
+IMadisonMapBackend.java		junit5.jar
+IMapLoader.java			log
+IShortestPath.class		out
+IShortestPath.java
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:55:20 PM[0m[38;5;66m[49m[38;5;66m
