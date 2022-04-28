@@ -1,0 +1,92 @@
+Script started on 2022-04-28 04:30:24+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="52"]
+]0;ncolburn2@cs400-vm-1: ~/Project3_BN_blue[01;32mncolburn2@cs400-vm-1[00m:[01;34m~/Project3_BN_blue[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlog[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+]0;ncolburn2@cs400-vm-1: ~/Project3_BN_blue[01;32mncolburn2@cs400-vm-1[00m:[01;34m~/Project3_BN_blue[00m$ git log -1
+[?1h=[33mcommit ce47b6580c668493303a517f1bc5d4435bdef3ad[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m[m
+Author: Nate Colburn <ncolburn2@wisc.edu>[m
+Date:   Thu Apr 28 04:26:35 2022 +0000[m
+[m
+    added files[m
+[K[?1l>]0;ncolburn2@cs400-vm-1: ~/Project3_BN_blue[01;32mncolburn2@cs400-vm-1[00m:[01;34m~/Project3_BN_blue[00m$ make clean
+rm *.class
+]0;ncolburn2@cs400-vm-1: ~/Project3_BN_blue[01;32mncolburn2@cs400-vm-1[00m:[01;34m~/Project3_BN_blue[00m$ ls
+FDBackendMadisonMap.java  FrontendDeveloperTests.java  IMapLoader.java
+FDEdge.java               FrontendMadisonMap.java      IShortestPath.java
+FDIEdge.java              GraphADT.java                IVertex.java
+FDIShortestPath.java      IEdge.java                   Makefile
+FDIVertex.java            IFrontendMadisonMap.java     [0m[01;31mjunit5.jar[0m
+FDShortestPath.java       IMadisonMap.java             log
+FDVertex.java             IMadisonMapBackend.java
+]0;ncolburn2@cs400-vm-1: ~/Project3_BN_blue[01;32mncolburn2@cs400-vm-1[00m:[01;34m~/Project3_BN_blue[00m$ make runTests
+javac FDBackendMadisonMap.java
+javac FrontendMadisonMap.java
+javac FDIShortestPath.java
+javac -cp .:junit5.jar FrontendDeveloperTests.java
+java -jar junit5.jar -cp . --scan-classpath -n FrontendDeveloperTests
+The shortest path from start to end is: start --> State Street --> end
+The walking time is: 1 minute
+The shortest path from randomnonsense---asdsdjadshdsajdsa to randomnonsense---asdsdjadshdsajdsa is: randomnonsense---asdsdjadshdsajdsa --> State Street --> randomnonsense---asdsdjadshdsajdsa
+The walking time is: 1 minute
+The shortest path from  to  is:  --> State Street --> 
+The walking time is: 1 minute
+The shortest path from 1 to 1 is: 1 --> State Street --> 1
+The walking time is: 1 minute
+The shortest path from 112312321123 to 123123123321 is: 112312321123 --> State Street --> 123123123321
+The walking time is: 1 minute
+3
+The minimum spanning tree is: Bookstore --> State Street --> Moss Humanities --> State Street --> Madison Market --> State Street --> Witte Hall
+3
+The minimum spanning tree is: Bookstore --> State Street --> Moss Humanities --> State Street --> Madison Market --> State Street --> Witte Hall
+3
+The minimum spanning tree is: Bookstore --> State Street --> Moss Humanities --> State Street --> Madison Market --> State Street --> Witte Hall
+3
+The minimum spanning tree is: Bookstore --> State Street --> Moss Humanities --> State Street --> Madison Market --> State Street --> Witte Hall
+3
+The minimum spanning tree is: Bookstore --> State Street --> Moss Humanities --> State Street --> Madison Market --> State Street --> Witte Hall
+3
+The minimum spanning tree is: Bookstore --> State Street --> Moss Humanities --> State Street --> Madison Market --> State Street --> Witte Hall
+The shortest path from 1 to 2 is: 1 --> State Street --> 2
+The walking time is: 1 minute
+3
+The minimum spanning tree is: Bookstore --> State Street --> Moss Humanities --> State Street --> Madison Market --> State Street --> Witte Hall
+The shortest path from start to end is: start --> State Street --> end
+The walking time is: 1 minute
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mFrontendDeveloperTests[0m [32m✔[0m
+[36m│     ├─[0m [34mtest1()[0m [32m✔[0m
+[36m│     ├─[0m [34mtest2()[0m [32m✔[0m
+[36m│     ├─[0m [34mtest3()[0m [32m✔[0m
+[36m│     ├─[0m [34mtest4()[0m [32m✔[0m
+[36m│     └─[0m [34mtest5()[0m [32m✔[0m
+[36m└─[0m [36mJUnit Vintage[0m [32m✔[0m
+
+Test run finished after 426 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         5 tests found           ]
+[         0 tests skipped         ]
+[         5 tests started         ]
+[         0 tests aborted         ]
+[         5 tests successful      ]
+[         0 tests failed          ]
+
+]0;ncolburn2@cs400-vm-1: ~/Project3_BN_blue[01;32mncolburn2@cs400-vm-1[00m:[01;34m~/Project3_BN_blue[00m$ exit
+exit
+
+Script done on 2022-04-28 04:30:55+00:00 [COMMAND_EXIT_CODE="0"]
