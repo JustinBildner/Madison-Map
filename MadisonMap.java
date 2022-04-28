@@ -2,11 +2,16 @@ import java.util.*;
 
 public class MadisonMap<T> implements IMadisonMap<T> {
 
+    /** Computes Minimum Spanning Tree using Primm's Algorithm
+     *
+     * @param start data for the start vertex
+     * @return ShortestPath object which contains a list of vertices and edges traversed
+     */
     @Override public ShortestPath computeMinimumSpanningTree(T start) {
         if(containsVertex(start) == false)
             throw new NoSuchElementException();
 
-        //Priority Queue that tracks the paths visited so far
+        //Priority Queue that tracks the Edges needed to be visited
         PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
         List<IVertex> visited = new ArrayList<>();
         List<IEdge> edgesTraversed = new ArrayList<>();
@@ -19,12 +24,12 @@ public class MadisonMap<T> implements IMadisonMap<T> {
 
         visited.add(tE.target);
 
-        //While loop until the shortest path found between start and end is found
+        //While loop until all vertices are found
         while(edgesTraversed.size() < getVertexCount()-1){
 
             tE = pq.poll();
 
-            //Go through every edge that is encounters checking to see if shortest path to vertices has been found yet
+            //Go through every edge that is encounters checking to see if it should be added to Priority Queue
             for(int i = 0; i < tE.target.edgesLeaving.size(); i++){
                 if(!visited.contains(((Edge) tE.target.edgesLeaving.get(i)).getTarget())){
                     pq = checkReplace(pq, (Edge) tE.target.edgesLeaving.get(i));
@@ -39,6 +44,13 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         return new ShortestPath(visited, edgesTraversed);
     }
 
+    /** Helper method for computeMinimumSpanningTree that checks whether the edge in the Priority
+     * Queue should be just added or replace another within the queue
+     *
+     * @param pq Priority Queue from computeMinimumSpanningTree
+     * @param newEdge New Edge from computeMinimumSpanningTree that's looking to insert
+     * @return changes priority queue
+     */
     public PriorityQueue<Edge> checkReplace(PriorityQueue<Edge> pq, Edge newEdge){
 
         //iterate through nodes in priority queue and update the key for the vertex
@@ -69,15 +81,13 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         return pq;
     }
 
-    /**
-     * Returns the shortest path between start and end.
-     * Uses Dijkstra's shortest path algorithm to find the shortest path.
+
+    /**Method that helps with testing that gets the Vertex List from the ShortestPath object gotten
+     * from computing the minimum spanning tree and converts it into data that can be turned into a string
+     * representation
      *
-     * @param start the data item in the starting vertex for the path
-     * @return list of data item in vertices in order on the shortest path between vertex
-     * with data item start and vertex with data item end, including both start and end
-     * @throws NoSuchElementException when no path from start to end can be found
-     *     including when no vertex containing start or end can be found
+     * @param start starting node
+     * @return list of string data
      */
     public List<T> minTreeVert(T start) {
         List<IVertex> vertices = computeMinimumSpanningTree(start).vertices;
@@ -89,6 +99,13 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         return data;
     }
 
+    /**Method that helps with testing that gets the Edges Traversed List from the ShortestPath object gotten
+     * from computing the minimum spanning tree and converts it into data that can be turned into a string
+     * representation
+     *
+     * @param start starting node
+     * @return list of string data
+     */
     public List<T> minTreeEdge(T start) {
         List<IEdge> edges = computeMinimumSpanningTree(start).edges;
         List<T> data = new ArrayList<>();
@@ -164,10 +181,6 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         }
         //When there is no path between the start and end nodes then NoSuchElementException will be thrown
         throw new NoSuchElementException();
-    }
-
-    @Override public IShortestPath computeShortestPath(IVertex start, IVertex end) {
-        return null;
     }
 
     public Hashtable<T, Vertex> vertices; // holds graph verticies, key=data

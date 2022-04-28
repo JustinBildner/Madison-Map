@@ -23,13 +23,4 @@ public interface IMadisonMap<T> extends GraphADT <T>{
      */
     public IShortestPath computeMinimumSpanningTree(T start);
 
-
-    /** An instance of this method takes in a starting and ending vertex and returns a Shortest Path object
-     *
-     * @param start the starting vertex
-     * @param end the ending vertex
-     * @return a shortest path obkect which will contain an ordered list of vertices and edges visited
-     */
-    public IShortestPath computeShortestPath(IVertex start, IVertex end);
-
 }

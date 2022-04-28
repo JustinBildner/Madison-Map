@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Tests the implementation of CS400Graph for the individual component of
+ * Tests the implementation of MadisonMap for
  * Project Three: the implementation of Dijsktra's Shortest Path algorithm.
  */
 public class AlgorithmEngineerTests {
@@ -15,7 +15,7 @@ public class AlgorithmEngineerTests {
     private MadisonMap<String> graph;
 
     /**
-     * Instantiate graph from last week's shortest path activity.
+     * Instantiate example graph.
      */
     @BeforeEach
     public void createGraph() {
@@ -52,7 +52,8 @@ public class AlgorithmEngineerTests {
     }
 
     /**
-     * Checks the distance/total weight cost from the vertex A to F.
+     * Checks the list of Vertices in the ShortestPath object making sure they are correct for the
+     * Minimum spanning tree computed using Primm's starting at Vertex A
      */
     @Test
     public void MinTreeA() {
@@ -62,7 +63,8 @@ public class AlgorithmEngineerTests {
     }
 
     /**
-     * Checks the distance/total weight cost from the vertex A to F.
+     * Checks the list of Edges in the ShortestPath object making sure they are correct for the
+     * Minimum spanning tree computed using Primm's starting at Vertex A
      */
     @Test
     public void MinTreeEdgeA() {
@@ -72,7 +74,8 @@ public class AlgorithmEngineerTests {
     }
 
     /**
-     * Checks the distance/total weight cost from the vertex A to F.
+     * Checks the list of Vertices in the ShortestPath object making sure they are correct for the
+     * Minimum spanning tree computed using Primm's starting at Vertex G
      */
     @Test
     public void MinTreeG() {
@@ -83,7 +86,8 @@ public class AlgorithmEngineerTests {
     }
 
     /**
-     * Checks the distance/total weight cost from the vertex A to F.
+     * Checks the list of Vertices in the ShortestPath object making sure they are correct for the
+     * Minimum spanning tree computed using Primm's starting at Vertex C
      */
     @Test
     public void MinTreeC() {
@@ -94,7 +98,7 @@ public class AlgorithmEngineerTests {
     }
 
     /**
-     * Checks that method throws an exception when there is no path from start to end
+     * Checks that method throws an exception when there is no starting vertex
      */
     @Test
     public void testNullPointException() {
