@@ -13,20 +13,20 @@ public class MadisonMap<T> implements IMadisonMap<T> {
 
         Edge tE = new Edge(vertices.get(start), vertices.get(start), 0);
 
-//        Path tP = new Path(vertices.get(start));
-//        Path eTP;
+        for(int i = 0; i < tE.target.edgesLeaving.size(); i++){
+                pq.add((Edge) tE.target.edgesLeaving.get(i));
+            }
 
-        pq.add(tE);
+        visited.add(tE.target);
 
         //While loop until the shortest path found between start and end is found
-        while(!pq.isEmpty()){
+        while(edgesTraversed.size() < getVertexCount()-1){
 
             tE = pq.poll();
 
             //Go through every edge that is encounters checking to see if shortest path to vertices has been found yet
             for(int i = 0; i < tE.target.edgesLeaving.size(); i++){
-                if(!visited.contains((tE.target.edgesLeaving.get(i)))){
-                    pq.add((Edge) tE.target.edgesLeaving.get(i));
+                if(!visited.contains(((Edge) tE.target.edgesLeaving.get(i)).getTarget())){
                     pq = checkReplace(pq, (Edge) tE.target.edgesLeaving.get(i));
                 }
             }
@@ -36,7 +36,6 @@ public class MadisonMap<T> implements IMadisonMap<T> {
             edgesTraversed.add(tE);
 
         }
-
         return new ShortestPath(visited, edgesTraversed);
     }
 
@@ -44,21 +43,29 @@ public class MadisonMap<T> implements IMadisonMap<T> {
 
         //iterate through nodes in priority queue and update the key for the vertex
         Iterator it = pq.iterator();
+        boolean add = false;
+        boolean remove = false;
+        Edge toRemove = null;
 
         while (it.hasNext()) {
-            System.out.println("here");
             Edge edge = (Edge) it.next();
             if(newEdge.target == edge.target) {
                 if (newEdge.compareTo(edge) < 0) {
-                    pq.remove(edge);
+                    toRemove = edge;
+                    remove = true;
+                    add = true;
                 }
-                else if(newEdge.compareTo(edge) > 0){
-                    pq.remove(newEdge);
-                    System.out.println(newEdge.target.data);
-                }
+                break;
             }
-
+            else{
+                add = true;
+            }
         }
+        if(add)
+            pq.add(newEdge);
+        if(remove)
+            pq.remove(toRemove);
+
         return pq;
     }
 
@@ -85,10 +92,13 @@ public class MadisonMap<T> implements IMadisonMap<T> {
     public List<T> minTreeEdge(T start) {
         List<IEdge> edges = computeMinimumSpanningTree(start).edges;
         List<T> data = new ArrayList<>();
-        for(IEdge e: edges)
-        {
-            data.add((T)(((Edge)e).getStart().getName() + ((Edge)e).getTarget().getName()));
+        for (int i = 0; i < edges.size(); i++) {
+            String s = ((Edge) edges.get(i)).getStart().getName();
+            String e = ((Edge) edges.get(i)).getTarget().getName();
+            data.add((T) (s+e));
         }
+
+
         return data;
     }
 
@@ -245,7 +255,7 @@ public class MadisonMap<T> implements IMadisonMap<T> {
             }
         }
         // otherwise add new edge to sourceVertex
-        sourceVertex.edgesLeaving.add(new Edge(targetVertex,weight));
+        sourceVertex.edgesLeaving.add(new Edge(sourceVertex, targetVertex,weight));
         return true;
     }
 

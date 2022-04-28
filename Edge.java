@@ -6,16 +6,17 @@ import java.util.List;
  * their target destination vertex, along with an integer weight.
  */
 public class Edge implements Comparable<Edge>, IEdge{
-    public Vertex target;
     public Vertex start;
+    public Vertex target;
     public int weight;
 
-    public Edge(Vertex target, int weight) {
-        this.target = target;
-        this.weight = weight;
-    }
+//    public Edge(Vertex target, int weight) {
+//        this.target = target;
+//        this.weight = weight;
+//    }
 
     public Edge(Vertex start, Vertex target, int weight) {
+        this.start = start;
         this.target = target;
         this.weight = weight;
     }
