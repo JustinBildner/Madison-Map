@@ -15,12 +15,12 @@ Vertex.class: Vertex.java IVertex.java
 	javac IVertex.java
 Path.class: Path.java IShortestPath.java
 	javac Path.java
-	javac IPath.java
-ShortestPath: ShortestPath.java IShortestPath.java
+	javac IShortestPath.java
+ShortestPath.class: ShortestPath.java IShortestPath.java
 	javac ShortestPath.java
 	javac IShortestPath.java
 	
 AlgorithmEngineerTests.class: MadisonMap.class AlgorithmEngineerTests.java
 	javac -cp .:junit5.jar AlgorithmEngineerTests.java -Xlint
 clean:
-        rm *.class
+	rm *.class
