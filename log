@@ -145,4 +145,78 @@ IMadisonMapBackend.java		junit5.jar
 IMapLoader.java			log
 IShortestPath.class		out
 IShortestPath.java
-[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:55:20 PM[0m[38;5;66m[49m[38;5;66m
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:55:20 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004hggit a status[?2004l
+On branch AlgorithmEngineer
+Your branch is ahead of 'origin/AlgorithmEngineer' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlog[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;39m?1[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:55:23 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004hggit add log[?2004l
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;178m[38;5;76mAlgorithmEngineer [38;5;76m⇡4 [38;5;178m+1[0m[38;5;178m[49m[38;5;178m[0m[38;5;178m[49m [0m[38;5;178m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[23C[0m[49m[38;5;66m11:55:29 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[34D[?2004hggit commit  -m "adding l[Kog file"[?2004l
+[AlgorithmEngineer c790dc5] adding log file
+ Committer: Justin Bildner <justinbildner@Justins-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 148 insertions(+)
+ create mode 100644 log
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[38;5;76mAlgorithmEngineer [38;5;76m⇡5[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m [0m[38;5;76m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[26C[0m[49m[38;5;66m11:55:43 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[37D[?2004hggit push[?2004l
+Password: 
+Duo two-factor login for bildner
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-3898
+
+Passcode or option (1-1): 1
+Enumerating objects: 27, done.
+Counting objects:   3% (1/27)Counting objects:   7% (2/27)Counting objects:  11% (3/27)Counting objects:  14% (4/27)Counting objects:  18% (5/27)Counting objects:  22% (6/27)Counting objects:  25% (7/27)Counting objects:  29% (8/27)Counting objects:  33% (9/27)Counting objects:  37% (10/27)Counting objects:  40% (11/27)Counting objects:  44% (12/27)Counting objects:  48% (13/27)Counting objects:  51% (14/27)Counting objects:  55% (15/27)Counting objects:  59% (16/27)Counting objects:  62% (17/27)Counting objects:  66% (18/27)Counting objects:  70% (19/27)Counting objects:  74% (20/27)Counting objects:  77% (21/27)Counting objects:  81% (22/27)Counting objects:  85% (23/27)Counting objects:  88% (24/27)Counting objects:  92% (25/27)Counting objects:  96% (26/27)Counting objects: 100% (27/27)Counting objects: 100% (27/27), done.
+Delta compression using up to 12 threads
+Compressing objects:   4% (1/21)Compressing objects:   9% (2/21)Compressing objects:  14% (3/21)Compressing objects:  19% (4/21)Compressing objects:  23% (5/21)Compressing objects:  28% (6/21)Compressing objects:  33% (7/21)Compressing objects:  38% (8/21)Compressing objects:  42% (9/21)Compressing objects:  47% (10/21)Compressing objects:  52% (11/21)Compressing objects:  57% (12/21)Compressing objects:  61% (13/21)Compressing objects:  66% (14/21)Compressing objects:  71% (15/21)Compressing objects:  76% (16/21)Compressing objects:  80% (17/21)Compressing objects:  85% (18/21)Compressing objects:  90% (19/21)Compressing objects:  95% (20/21)Compressing objects: 100% (21/21)Compressing objects: 100% (21/21), done.
+Writing objects:   4% (1/21)Writing objects:   9% (2/21)Writing objects:  14% (3/21)Writing objects:  19% (4/21)Writing objects:  23% (5/21)Writing objects:  28% (6/21)Writing objects:  33% (7/21)Writing objects:  38% (8/21)Writing objects:  42% (9/21)Writing objects:  47% (10/21)Writing objects:  52% (11/21)Writing objects:  57% (12/21)Writing objects:  61% (13/21)Writing objects:  66% (14/21)Writing objects:  71% (15/21)Writing objects:  80% (17/21)Writing objects:  85% (18/21)Writing objects:  90% (19/21)Writing objects:  95% (20/21)Writing objects: 100% (21/21)Writing objects: 100% (21/21), 1.70 MiB | 14.37 MiB/s, done.
+Total 21 (delta 13), reused 0 (delta 0)
+To ssh://best-linux.cs.wisc.edu:/p/course/cs400/activities/repos/Project3_BN_blue
+   5cf388b..c790dc5  AlgorithmEngineer -> AlgorithmEngineer
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;178m[38;5;76mAlgorithmEngineer [38;5;178m!1[0m[38;5;178m[49m[38;5;178m[0m[38;5;178m[49m [0m[38;5;178m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[22C[0m[49m[38;5;101m19s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;66m 11:56:04 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[37D[?2004hlls[?2004l
+AlgorithmEngineerTests.class	IVertex.class
+AlgorithmEngineerTests.java	IVertex.java
+Edge.class			MadisonMap.class
+Edge.java			MadisonMap.java
+GraphADT.class			Makefile
+GraphADT.java			Path.class
+GraphTest.java			Path.java
+IEdge.class			Project3_BN_blue.iml
+IEdge.java			ShortestPath.class
+IFrontendMadisonMap.java	ShortestPath.java
+IMadisonMap.class		Vertex.class
+IMadisonMap.java		Vertex.java
+IMadisonMapBackend.java		junit5.jar
+IMapLoader.java			log
+IShortestPath.class		out
+IShortestPath.java
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;178m[38;5;76mAlgorithmEngineer [38;5;178m!1[0m[38;5;178m[49m[38;5;178m[0m[38;5;178m[49m [0m[38;5;178m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[26C[0m[49m[38;5;66m11:56:06 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[37D[?2004hggit status[?2004l
+On branch AlgorithmEngineer
+Your branch is up to date with 'origin/AlgorithmEngineer'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   log[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;31m[1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mProject3_BN_blue[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;178m[38;5;76mAlgorithmEngineer [38;5;178m!1[0m[38;5;178m[49m[38;5;178m[0m[38;5;178m[49m [0m[38;5;178m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[26C[0m[49m[38;5;66m11:56:09 PM[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[38;5;66m[0m[38;5;66m[49m[39m[37D[?2004heexit[?2004l
+
+Script done on Wed Apr 27 23:56:16 2022
