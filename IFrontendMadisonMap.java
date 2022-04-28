@@ -1,9 +1,10 @@
 // --== CS400 Project Three File Header ==--
-// Name: Nathaniel Colburn
-// CSL Username: colburn
+// Name: Nate Colburn
 // Email: ncolburn2@wisc.edu
-// Lecture #: 002 @1:00pm
-// Notes to Grader: <any optional extra notes to your grader>
+// Team: BN
+// TA: Sujitha Perumal
+// Lecturer: Gary Dahl
+// Notes to Grader: <optional extra notes>
 
 /**
  * This interface provides the methods to make an interactive map of Madison to find the shortest
@@ -17,21 +18,20 @@ public interface IFrontendMadisonMap {
    * Calls the back end shortestPath method and displays on the map the shortest path between two
    * points
    * 
-   * @param args An array of strings (points on the map) inputted from the webpage
+   * @param args An array of strings (points on the map) inputted from the terminal
    */
-  void DisplayShortestPath(String[] vertexes);
+  void DisplayShortestPath(String start, String end);
 
   /**
    * Calls the back end minimumTree method and displays the shortest path between multiple nodes
    * 
    * @param args An array of strings (points on the map) inputted from the webpage
    */
-  void DisplayMinimumTree(String[] vertexes);
+  void DisplayMinimumTree(String[] vertices);
   
   /**
-   * Main method that takes an array of strings from the website
+   * Main method that takes an array of strings from the terminal
    * 
-   * @param args An array of strings (points on the map) inputted from the webpage
+   * @param args An array of strings (points on the map) inputted from the terminal
    */
-  public static void main(String[] args);
 }
