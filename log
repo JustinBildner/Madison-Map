@@ -1,0 +1,76 @@
+Script started on 2022-04-28 19:45:32+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="87" LINES="54"]
+git status
+git log -1
+make clean
+ls
+make runTests
+exit]0;bhmiller3@cs400-vm1: ~/Project3_BN_blue[01;32mbhmiller3@cs400-vm1[00m:[01;34m~/Project3_BN_blue[00m$ git status
+On branch BackendDeveloper
+Your branch is up to date with 'origin/BackendDeveloper'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   Makefile[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlog[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;bhmiller3@cs400-vm1: ~/Project3_BN_blue[01;32mbhmiller3@cs400-vm1[00m:[01;34m~/Project3_BN_blue[00m$ git log -1
+[?1h=[33mcommit f7910879c4ef9777986c3ac838827e875cc29a09[m[33m ([m[1;36mHEAD -> [m[1;32mBackendDeveloper[m[33m, [m[1;31morigin/Backe[m [33m[m[33m[m[1;36m[m[1;32m[m[33m[m[1;31mndDeveloper[m[33m)[m[m
+Author: Ben Miller <bhmiller3@wisc.edu>[m
+Date:   Thu Apr 28 19:43:25 2022 +0000[m
+[m
+    Uploaded Backend Developer Files[m
+[K[?1l>]0;bhmiller3@cs400-vm1: ~/Project3_BN_blue[01;32mbhmiller3@cs400-vm1[00m:[01;34m~/Project3_BN_blue[00m$ make clean
+rm: cannot remove '*.class': No such file or directory
+make: *** [Makefile:47: clean] Error 1
+]0;bhmiller3@cs400-vm1: ~/Project3_BN_blue[01;32mbhmiller3@cs400-vm1[00m:[01;34m~/Project3_BN_blue[00m$ ls
+BEdge.java           BIVertex.java       BackendDeveloperTests.java  [0m[01;31mjunit5.jar[0m
+BIEdge.java          BMadisonMap.java    GraphADT.java               log
+BIMadisonMap.java    BMapLoader.java     IMadisonMapBackend.java
+BIMapLoader.java     BShortestPath.java  MadisonMapBackend.java
+BIShortestPath.java  BVertex.java        Makefile
+]0;bhmiller3@cs400-vm1: ~/Project3_BN_blue[01;32mbhmiller3@cs400-vm1[00m:[01;34m~/Project3_BN_blue[00m$ make runTests
+javac BEdge.java
+javac BIMadisonMap.java
+javac BMadisonMap.java
+javac BIMapLoader.java
+javac BMapLoader.java
+javac IMadisonMapBackend.java
+javac MadisonMapBackend.java
+javac -cp .:junit5.jar BackendDeveloperTests.java
+java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mBackendDeveloperTests[0m [32m✔[0m
+[36m│     ├─[0m [34mtestGetMinimumSpanningTree()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestGetShortestPath()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestModifiedShortestPath()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestValidConstructorInput()[0m [32m✔[0m
+[36m│     └─[0m [34mtestInvalidConstructorInput()[0m [32m✔[0m
+[36m└─[0m [36mJUnit Vintage[0m [32m✔[0m
+
+Test run finished after 205 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         5 tests found           ]
+[         0 tests skipped         ]
+[         5 tests started         ]
+[         0 tests aborted         ]
+[         5 tests successful      ]
+[         0 tests failed          ]
+
+]0;bhmiller3@cs400-vm1: ~/Project3_BN_blue[01;32mbhmiller3@cs400-vm1[00m:[01;34m~/Project3_BN_blue[00m$ exit
+exit
+
+Script done on 2022-04-28 19:45:44+00:00 [COMMAND_EXIT_CODE="0"]

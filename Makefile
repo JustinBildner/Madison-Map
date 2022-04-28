@@ -1,4 +1,4 @@
-runTest: BackendDeveloperTests.class
+runTests: BackendDeveloperTests.class
 	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
 BackendDeveloperTests.class: BEdge.class BIEdge.class BIMadisonMap.class BMadisonMap.class BIMapLoader.class BMapLoader.class BIShortestPath.class BShortestPath.class BIVertex.class BVertex.class IMadisonMapBackend.class MadisonMapBackend.class GraphADT.class BackendDeveloperTests.java
