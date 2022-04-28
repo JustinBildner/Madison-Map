@@ -101,7 +101,7 @@ public class AlgorithmEngineerTests {
         graph.removeVertex("C");
         assertThrows(NoSuchElementException.class, () -> { graph.minTreeVert("C");});
     }
-    
+
 
 //    /**
 //     * Checks the distance/total weight cost from the vertex A to F.
