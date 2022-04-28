@@ -17,7 +17,7 @@ public interface IFrontendMadisonMap {
    * Calls the back end shortestPath method and displays on the map the shortest path between two
    * points
    * 
-   * @param args An array of strings (points on the map) inputted from the webpage
+   * @param arg An array of strings (points on the map) inputted from the webpage
    */
   void DisplayShortestPath(String[] vertexes);
 
@@ -33,5 +33,4 @@ public interface IFrontendMadisonMap {
    * 
    * @param args An array of strings (points on the map) inputted from the webpage
    */
-  public static void main(String[] args);
 }

@@ -18,10 +18,10 @@ public interface IMadisonMap<T> extends GraphADT <T>{
     /** An instance of this method takes in a list of vertices or places we are visiting are returns a list of vertices that
      * make up a MinimumSpanningTree of the vertices visited and the edges traversed as well.
      *
-     * @param vertices list of intersections and places on the map in the form of vertices
+     * @param start data for the start node
      * @return a
      */
-    public List<IVertex> computeMinimumSpanningTree(List<IVertex> vertices);
+    public IShortestPath computeMinimumSpanningTree(T start);
 
 
     /** An instance of this method takes in a starting and ending vertex and returns a Shortest Path object

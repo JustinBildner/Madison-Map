@@ -2,45 +2,172 @@ import java.util.*;
 
 public class MadisonMap<T> implements IMadisonMap<T> {
 
-    @Override public List<IVertex> computeMinimumSpanningTree(List<IVertex> vertices) {
-        return null;
+    @Override public ShortestPath computeMinimumSpanningTree(T start) {
+        if(containsVertex(start) == false)
+            throw new NoSuchElementException();
+
+        //Priority Queue that tracks the paths visited so far
+        PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
+        List<IVertex> visited = new ArrayList<>();
+        List<IEdge> edgesTraversed = new ArrayList<>();
+
+        Edge tE = new Edge(vertices.get(start), vertices.get(start), 0);
+
+//        Path tP = new Path(vertices.get(start));
+//        Path eTP;
+
+        pq.add(tE);
+
+        //While loop until the shortest path found between start and end is found
+        while(!pq.isEmpty()){
+
+            tE = pq.poll();
+
+            //Go through every edge that is encounters checking to see if shortest path to vertices has been found yet
+            for(int i = 0; i < tE.target.edgesLeaving.size(); i++){
+                if(!visited.contains((tE.target.edgesLeaving.get(i)))){
+                    pq.add((Edge) tE.target.edgesLeaving.get(i));
+                    pq = checkReplace(pq, (Edge) tE.target.edgesLeaving.get(i));
+                }
+            }
+
+            //After a vertex has been visited and all its connecting vertices discovered it's added to the list to not be looked at again
+            visited.add(tE.target);
+            edgesTraversed.add(tE);
+
+        }
+
+        return new ShortestPath(visited, edgesTraversed);
+    }
+
+    public PriorityQueue<Edge> checkReplace(PriorityQueue<Edge> pq, Edge newEdge){
+
+        //iterate through nodes in priority queue and update the key for the vertex
+        Iterator it = pq.iterator();
+
+        while (it.hasNext()) {
+            System.out.println("here");
+            Edge edge = (Edge) it.next();
+            if(newEdge.target == edge.target) {
+                if (newEdge.compareTo(edge) < 0) {
+                    pq.remove(edge);
+                }
+                else if(newEdge.compareTo(edge) > 0){
+                    pq.remove(newEdge);
+                    System.out.println(newEdge.target.data);
+                }
+            }
+
+        }
+        return pq;
+    }
+
+    /**
+     * Returns the shortest path between start and end.
+     * Uses Dijkstra's shortest path algorithm to find the shortest path.
+     *
+     * @param start the data item in the starting vertex for the path
+     * @return list of data item in vertices in order on the shortest path between vertex
+     * with data item start and vertex with data item end, including both start and end
+     * @throws NoSuchElementException when no path from start to end can be found
+     *     including when no vertex containing start or end can be found
+     */
+    public List<T> minTreeVert(T start) {
+        List<IVertex> vertices = computeMinimumSpanningTree(start).vertices;
+        List<T> data = new ArrayList<>();
+        for(IVertex v: vertices)
+        {
+            data.add((T)v.getName());
+        }
+        return data;
+    }
+
+    public List<T> minTreeEdge(T start) {
+        List<IEdge> edges = computeMinimumSpanningTree(start).edges;
+        List<T> data = new ArrayList<>();
+        for(IEdge e: edges)
+        {
+            data.add((T)(((Edge)e).getStart().getName() + ((Edge)e).getTarget().getName()));
+        }
+        return data;
+    }
+
+    /**
+     * Uses Dijkstra's shortest path algorithm to find and return the shortest path
+     * between two vertices in this graph: start and end. This path contains an ordered list
+     * of the data within each node on this path, and also the distance or cost of all edges
+     * that are a part of this path.
+     * @param start data item within first node in path
+     * @param end data item within last node in path
+     * @return the shortest path from start to end, as computed by Dijkstra's algorithm
+     * @throws NoSuchElementException when no path from start to end can be found,
+     *     including when no vertex containing start or end can be found
+     */
+    public Path dijkstrasShortestPath(T start, T end) {
+        //Start or End is null or they don't exist within the graph
+        if(start == null || end == null || containsVertex(start) == false || containsVertex(end) ==false)
+            throw new NoSuchElementException();
+
+        //First path initialization which only contains the start vertex
+        Path tP = new Path(vertices.get(start));
+
+
+        //Priority Queue that tracks the paths visited so far
+        PriorityQueue<Path> pq = new PriorityQueue<Path>();
+
+        //Add the first path to the priority queue
+        pq.add(tP);
+
+        //List of vertices visited to keep track
+        List<Vertex> visited = new ArrayList<Vertex>();
+
+        Path eTP;
+
+        //While loop until the shortest path found between start and end is found
+        while(pq.isEmpty() == false){
+
+            //End vertex has been found
+            if(tP.end.data.equals(end)) {
+                tP.visited = visited;
+                return tP;
+            }
+
+            //Go through every edge that is encounters checking to see if shortest path to vertices has been found yet
+            for(int i = 0; i < tP.end.edgesLeaving.size(); i++){
+                if(!visited.contains(((Edge)tP.end.edgesLeaving.get(i)).target)){
+                    pq.add(new Path(tP, (Edge) tP.end.edgesLeaving.get(i)));
+                }
+            }
+
+            //After a vertex has been visited and all its connecting vertices discovered it's added to the list to not be looked at again
+            visited.add(tP.end);
+
+            //Change temp path to the shortest path from the priority queue
+            eTP = tP;
+            tP = pq.poll();
+//            for(int i = 0; i < tP.end.edgesLeaving.size(); i++){
+//                if(tP.end == ((Edge)eTP.end.edgesLeaving.get(i)).target){
+//                    pq.add(new Path(tP, (Edge) tP.end.edgesLeaving.get(i)));
+//                }
+//            }
+
+        }
+        //When there is no path between the start and end nodes then NoSuchElementException will be thrown
+        throw new NoSuchElementException();
     }
 
     @Override public IShortestPath computeShortestPath(IVertex start, IVertex end) {
         return null;
     }
 
-    /**
-     * Vertex objects group a data field with an adjacent list of weighted
-     * directed edges that lead away from them.
-     */
-    protected class Vertex {
-        public T data; // vertex label or application specific data
-        public LinkedList<Edge> edgesLeaving;
-
-        public Vertex(T data) {
-            this.data = data;
-            this.edgesLeaving = new LinkedList<>();
-        }
-    }
-
-    /**
-     * Edge objects are stored within their source vertex, and group together
-     * their target destination vertex, along with an integer weight.
-     */
-    protected class Edge {
-        public Vertex target;
-        public int weight;
-
-        public Edge(Vertex target, int weight) {
-            this.target = target;
-            this.weight = weight;
-        }
-    }
-
-    protected Hashtable<T, Vertex> vertices; // holds graph verticies, key=data
+    public Hashtable<T, Vertex> vertices; // holds graph verticies, key=data
     public MadisonMap() {
         vertices = new Hashtable<>();
+    }
+
+    public Hashtable<T, Vertex> getVertices()
+    {
+        return this.vertices;
     }
 
     /**
@@ -75,9 +202,11 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         // search all vertices for edges targeting removeVertex
         for(Vertex v : vertices.values()) {
             Edge removeEdge = null;
-            for(Edge e : v.edgesLeaving)
-                if(e.target == removeVertex)
-                    removeEdge = e;
+            for(Object e : v.edgesLeaving) {
+                e = (Edge) e;
+                if (((Edge) e).target == removeVertex)
+                    removeEdge = (Edge) e;
+            }
             // and remove any such edges that are found
             if(removeEdge != null) v.edgesLeaving.remove(removeEdge);
         }
@@ -107,12 +236,14 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         if(weight < 0)
             throw new IllegalArgumentException("Cannot add edge with negative weight");
         // handle cases where edge already exists between these verticies
-        for(Edge e : sourceVertex.edgesLeaving)
-            if(e.target == targetVertex) {
-                if(e.weight == weight) return false; // edge already exists
-                else e.weight = weight; // otherwise update weight of existing edge
+        for(Object e : sourceVertex.edgesLeaving){
+            e = (Edge)e;
+            if(((Edge) e).target == targetVertex) {
+                if(((Edge) e).weight == weight) return false; // edge already exists
+                else ((Edge) e).weight = weight; // otherwise update weight of existing edge
                 return true;
             }
+        }
         // otherwise add new edge to sourceVertex
         sourceVertex.edgesLeaving.add(new Edge(targetVertex,weight));
         return true;
@@ -134,9 +265,10 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         if(sourceVertex == null || targetVertex == null) throw new IllegalArgumentException("Cannot remove edge with vertices that do not exist");
         // find edge to remove
         Edge removeEdge = null;
-        for(Edge e : sourceVertex.edgesLeaving)
-            if(e.target == targetVertex)
-                removeEdge = e;
+        for(Object e : sourceVertex.edgesLeaving) {
+            if (((Edge)e).target == targetVertex)
+                removeEdge = (Edge) e;
+        }
         if(removeEdge != null) { // remove edge that is successfully found
             sourceVertex.edgesLeaving.remove(removeEdge);
             return true;
@@ -169,8 +301,8 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         Vertex sourceVertex = vertices.get(source);
         Vertex targetVertex = vertices.get(target);
         if(sourceVertex == null) return false;
-        for(Edge e : sourceVertex.edgesLeaving)
-            if(e.target == targetVertex)
+        for(Object e : sourceVertex.edgesLeaving)
+            if(((Edge)e).target == targetVertex)
                 return true;
         return false;
     }
@@ -190,9 +322,9 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         Vertex sourceVertex = vertices.get(source);
         Vertex targetVertex = vertices.get(target);
         if(sourceVertex == null || targetVertex == null) throw new IllegalArgumentException("Cannot retrieve weight of edge between vertices that do not exist");
-        for(Edge e : sourceVertex.edgesLeaving)
-            if(e.target == targetVertex)
-                return e.weight;
+        for(Object e : sourceVertex.edgesLeaving)
+            if(((Edge)e).target == targetVertex)
+                return ((Edge) e).weight;
         throw new NoSuchElementException("No directed edge found between these vertices");
     }
 
@@ -226,122 +358,9 @@ public class MadisonMap<T> implements IMadisonMap<T> {
         return vertices.size() == 0;
     }
 
-    /**
-     * Path objects store a discovered path of vertices and the overall distance of cost
-     * of the weighted directed edges along this path. Path objects can be copied and extended
-     * to include new edges and vertices using the extend constructor. In comparison to a
-     * predecessor table which is sometimes used to implement Dijkstra's algorithm, this
-     * eliminates the need for tracing paths backwards from the destination vertex to the
-     * starting vertex at the end of the algorithm.
-     */
-    protected class Path implements Comparable<Path> {
-        public Vertex start; // first vertex within path
-        public int distance; // sumed weight of all edges in path
-        public List<T> dataSequence; // ordered sequence of data from vertices in path
-        public Vertex end; // last vertex within path
 
-        /**
-         * Creates a new path containing a single vertex.  Since this vertex is both
-         * the start and end of the path, it's initial distance is zero.
-         * @param start is the first vertex on this path
-         */
-        public Path(Vertex start) {
-            this.start = start;
-            this.distance = 0;
-            this.dataSequence = new LinkedList<>();
-            this.dataSequence.add(start.data);
-            this.end = start;
-        }
 
-        /**
-         * This extension constructor makes a copy of the path passed into it as an argument
-         * without affecting the original path object (copyPath). The path is then extended
-         * by the Edge object extendBy.
-         * @param copyPath is the path that is being copied
-         * @param extendBy is the edge the copied path is extended by
-         */
-        public Path(Path copyPath, Edge extendBy) {
-            this.start = copyPath.start;
-            this.distance = copyPath.distance;
-            this.distance+=extendBy.weight;
-            this.dataSequence = new LinkedList<>();
-            for(int i =0; i <copyPath.dataSequence.size(); i++)
-            {
-                this.dataSequence.add(copyPath.dataSequence.get(i));
-            }
-            dataSequence.add(extendBy.target.data);
-            this.end = extendBy.target;
-        }
 
-        /**
-         * Allows the natural ordering of paths to be increasing with path distance.
-         * When path distance is equal, the string comparison of end vertex data is used to break ties.
-         * @param other is the other path that is being compared to this one
-         * @return -1 when this path has a smaller distance than the other,
-         *         +1 when this path has a larger distance that the other,
-         *         and the comparison of end vertex data in string form when these distances are tied
-         */
-        public int compareTo(Path other) {
-            int cmp = this.distance - other.distance;
-            if(cmp != 0) return cmp; // use path distance as the natural ordering
-            // when path distances are equal, break ties by comparing the string
-            // representation of data in the end vertex of each path
-            return this.end.data.toString().compareTo(other.end.data.toString());
-        }
-    }
-
-    /**
-     * Uses Dijkstra's shortest path algorithm to find and return the shortest path
-     * between two vertices in this graph: start and end. This path contains an ordered list
-     * of the data within each node on this path, and also the distance or cost of all edges
-     * that are a part of this path.
-     * @param start data item within first node in path
-     * @param end data item within last node in path
-     * @return the shortest path from start to end, as computed by Dijkstra's algorithm
-     * @throws NoSuchElementException when no path from start to end can be found,
-     *     including when no vertex containing start or end can be found
-     */
-    protected Path dijkstrasShortestPath(T start, T end) {
-        //Start or End is null or they don't exist within the graph
-        if(start == null || end == null || containsVertex(start) == false || containsVertex(end) ==false)
-            throw new NoSuchElementException();
-
-        //First path initialization which only contains the start vertex
-        Path tP = new Path(vertices.get(start));
-
-        //Priority Queue that tracks the paths visited so far
-        PriorityQueue<Path> pq = new PriorityQueue<Path>();
-
-        //Add the first path to the priority queue
-        pq.add(tP);
-
-        //List of vertices visited to keep track
-        List<Vertex> visited = new ArrayList<Vertex>();
-
-        //While loop until the shortest path found between start and end is found
-        while(pq.isEmpty() == false){
-
-            //End vertex has been found
-            if(tP.end.data.equals(end)) {
-                return tP;
-            }
-
-            //Go through every edge that is encounters checking to see if shortest path to vertices has been found yet
-            for(int i = 0; i < tP.end.edgesLeaving.size(); i++){
-                if(!visited.contains(tP.end.edgesLeaving.get(i).target)){
-                    pq.add(new Path(tP, tP.end.edgesLeaving.get(i)));
-                }
-            }
-
-            //After a vertex has been visited and all its connecting vertices discovered it's added to the list to not be looked at again
-            visited.add(tP.end);
-
-            //Change temp path to the shortest path from the priority queue
-            tP = pq.poll();
-        }
-        //When there is no path between the start and end nodes then NoSuchElementException will be thrown
-        throw new NoSuchElementException();
-    }
 
 
     /**
