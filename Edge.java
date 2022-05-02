@@ -1,49 +1,77 @@
-import java.util.LinkedList;
-import java.util.List;
+// --== CS400 Project Three File Header ==--
+// Name: Benjamin Miller
+// CSL Username: benm
+// Email: bhmiller3@wisc.edu
+// Lecture #: 002 @1:00pm
+// Notes to Grader: None
 
 /**
- * Edge objects are stored within their source vertex, and group together
- * their target destination vertex, along with an integer weight.
+ * Working implementation of the BIEdge interface which provides the necessary construction 
+ * for the graphical edges utilized within the IMadisonMap class.
+ * @author Benjamin Miller
  */
-public class Edge implements Comparable<Edge>, IEdge{
-    public Vertex start;
-    public Vertex target;
-    public int weight;
+public class Edge implements IEdge {
+    private int weight; // corresponds to the distance between vertexA and vertexB
+    private IVertex[] vertices; // contains the two vertices that this edge connects
+    private boolean visited; // Changed to true if included in MST formed by Engineer
 
-//    public Edge(Vertex target, int weight) {
-//        this.target = target;
-//        this.weight = weight;
-//    }
-
-    public Edge(Vertex start, Vertex target, int weight) {
-        this.start = start;
-        this.target = target;
+    /**
+     * Constructor which both initializes the "weight" field to its corresponding parameter and
+     * adds two vertices, a source (A) and target (B), as indices 0 and 1, respectively, of the
+     * internal BIVertex[] array.
+     * @param A denotes the source IVertex object from which the Edge originates
+     * @param B denotes the target IVertex object to which the Edge connects
+     * @param weight denotes the weight of the Edge
+     */
+    public Edge(IVertex A, IVertex B, int weight) {
+        vertices = new IVertex[] { A, B };
         this.weight = weight;
     }
 
     /**
-     * Allows the natural ordering of paths to be increasing with path distance.
-     * When path distance is equal, the string comparison of end vertex data is used to break ties.
-     * @param other is the other path that is being compared to this one
-     * @return -1 when this path has a smaller distance than the other,
-     *         +1 when this path has a larger distance that the other,
-     *         and the comparison of end vertex data in string form when these distances are tied
+     * Accessor method for the Edge "vertices" field.
+     * @return an IVertex[] array denoting the two vertices connected by the Edge object (Note,
+     * index 0 of the array corresponds to the source IVertex object, while index 1 corresponds
+     * to the target IVertex object)
      */
-    public int compareTo(Edge other) {
-        int cmp = this.weight - other.weight;
-        if(cmp != 0) return cmp; // use path distance as the natural ordering
-        // when path distances are equal, break ties by comparing the string
-        // representation of data in the end vertex of each path
-        return this.target.data.toString().compareTo(other.target.data.toString());
+    @Override
+    public IVertex[] getVertices() {
+        return vertices;
     }
 
-    @Override public boolean isVisited() {
-        return false;
+    /**
+     * Modifier method which enables the user to edit the weight of the Edge object
+     * @param val denotes the desired edge weight
+     */
+    public void setWeight(int val) {
+        weight = val;
     }
-    public IVertex getStart() {
-        return start;
+
+    /**
+     * Accessor method for the Edge "weight" field.
+     * @return the int weight of the Edge object
+     */
+    @Override
+    public int getWeight() {
+        return weight;
     }
-    public IVertex getTarget() {
-        return target;
+
+    /**
+     * Modifier method which enables the user to toggle the "visited" state of the Edge object
+     */
+    @Override
+    public void setVisited(boolean status) {
+        visited = status;
     }
+
+    /**
+     * Accessor method for the Edge "visited" field.
+     * @return true if the Edge proves is visited when constructing a shortest path, false otherwise
+     */
+    @Override
+    public boolean isVisited() {
+        return visited;
+    }
+
+
 }
