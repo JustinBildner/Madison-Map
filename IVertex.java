@@ -1,22 +1,29 @@
-import java.util.Hashtable;
+// --== CS400 Project Three File Header ==--
+// Name: Benjamin Miller
+// CSL Username: benm
+// Email: bhmiller3@wisc.edu
+// Lecture #: 002 @1:00pm
+// Notes to Grader: None
+
+import java.util.List;
 
 /**
- * Vertex Interface which defines the necessary methods for Vertex
- * 
- * @author Noah Jillson
+ * Interface for the BVertex class which provides the graphical vertices for the MadisonMap class
+ * @author Benjamin Miller
+ *
  */
 public interface IVertex {
-	public String getName(); // Gets the name of a given vertex 
-			   	 // (i.e. book store or University intersection)
+  /* POSSIBLE FIELDS
+   * private String name; // Name of the hotspot location
+   * private List<BIEdge> edges;  // List of all edges connected to the Vertex
+   */
+  
+  // Returns the location name of the IVertex object
+  public String getName();
 
-	public int[] getCoordinates(); // Gets the xy-coordinates of any given node on the map with 
-  				       // the bottom left corner being (0,0). The values are represent 
-				       // distance on the map in feet from (0,0).
-
-	public Hashtable<String, IEdge> getEdges(); // Gets the Hash Table containing all edges
-					    	    // connected to this node. The key in this Hash
-					    	    // Table is the name of the other node that is
-						    // connected to this node by the edge stored as the
-	    					    // value.
+  // Returns the list of BIEdge objects connected to the vertex
+  public List<IEdge> getEdges();
+  
+  // Modifier method which enables one to add a new BIEdge to the list of connected edges
+  public void addConnectingEdge(IVertex target, int weight);
 }
-
