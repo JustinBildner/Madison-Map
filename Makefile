@@ -1,4 +1,4 @@
-run: FDBackendMadisonMap.class FrontendMadisonMap.class FDEdge.class FDIEdge.class FDIShortestPath.class FDIVertex.class FDShortestPath.class FDVertex.class
+run: FDBackendMadisonMap.class FDFrontMadisonMap.class FrontendMadisonMap.class FDEdge.class FDIEdge.class FDIShortestPath.class FDIVertex.class FDShortestPath.class FDVertex.class
 	java FrontendMadisonMap	
 
 runTests: runFrontendDeveloperTests
@@ -6,7 +6,7 @@ runTests: runFrontendDeveloperTests
 runFrontendDeveloperTests: FrontendDeveloperTests.class
 	java -jar junit5.jar -cp . --scan-classpath -n FrontendDeveloperTests
 
-FrontendDeveloperTests.class: FDBackendMadisonMap.class FrontendMadisonMap.class FDEdge.class FDIEdge.class FDIShortestPath.class FDIVertex.class FDShortestPath.class FDVertex.class
+FrontendDeveloperTests.class: FDBackendMadisonMap.class FrontendMadisonMap.class FDFrontendMadisonMap.class FDEdge.class FDIEdge.class FDIShortestPath.class FDIVertex.class FDShortestPath.class FDVertex.class
 	javac -cp .:junit5.jar FrontendDeveloperTests.java
 
 FDBackendMadisonMap.class: FDBackendMadisonMap.java
@@ -32,6 +32,9 @@ FDShortestPath.class: FDShortestPath.java
 
 FDVertex.class: FDVertex.java
 	javac FDVertex.java
+
+FDFrontendMadisonMap.class: FDFrontendMadisonMap.java
+	javac FDFrontendMadisonMap.java
 
 clean:
 	rm *.class

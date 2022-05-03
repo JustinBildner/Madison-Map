@@ -27,7 +27,7 @@ public interface IFrontendMadisonMap {
    * 
    * @param args An array of strings (points on the map) inputted from the webpage
    */
-  void DisplayMinimumTree(String[] vertices);
+  void DisplayMinimumTree(String vertices);
   
   /**
    * Main method that takes an array of strings from the terminal
