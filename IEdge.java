@@ -18,7 +18,9 @@ public interface IEdge {
   */
   
   // Gets the two vertices that this edge connects
-  public IVertex[] getVertices();
+  public IVertex getTarget();
+
+  public IVertex getStart();
   
   // Returns the weight of the edge which represents distance in feet
   public int getWeight();

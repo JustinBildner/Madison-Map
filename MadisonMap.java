@@ -1,13 +1,13 @@
 import java.util.*;
 
-public class MadisonMap<T> implements IMadisonMap<T> {
+public class MadisonMap implements IMadisonMap<String> {
 
     /** Computes Minimum Spanning Tree using Primm's Algorithm
      *
      * @param start data for the start vertex
      * @return ShortestPath object which contains a list of vertices and edges traversed
      */
-    @Override public ShortestPath computeMinimumSpanningTree(T start) {
+    @Override public ShortestPath computeMinimumSpanningTree(String start) {
         if(containsVertex(start) == false)
             throw new NoSuchElementException();
 
@@ -18,11 +18,11 @@ public class MadisonMap<T> implements IMadisonMap<T> {
 
         Edge tE = new Edge(vertices.get(start), vertices.get(start), 0);
 
-        for(int i = 0; i < tE.target.edgesLeaving.size(); i++){
-                pq.add((Edge) tE.target.edgesLeaving.get(i));
+        for(int i = 0; i < tE.getTarget().getEdges().size(); i++){
+                pq.add((Edge) tE.getTarget().getEdges().get(i));
             }
 
-        visited.add(tE.target);
+        visited.add(tE.getTarget());
 
         //While loop until all vertices are found
         while(edgesTraversed.size() < getVertexCount()-1){
@@ -30,14 +30,14 @@ public class MadisonMap<T> implements IMadisonMap<T> {
             tE = pq.poll();
 
             //Go through every edge that is encounters checking to see if it should be added to Priority Queue
-            for(int i = 0; i < tE.target.edgesLeaving.size(); i++){
-                if(!visited.contains(((Edge) tE.target.edgesLeaving.get(i)).getTarget())){
-                    pq = checkReplace(pq, (Edge) tE.target.edgesLeaving.get(i));
+            for(int i = 0; i < tE.getTarget().getEdges().size(); i++){
+                if(!visited.contains(((Edge) tE.getTarget().getEdges().get(i)).getTarget())){
+                    pq = checkReplace(pq, tE.getTarget().getEdges().get(i));
                 }
             }
 
             //After a vertex has been visited and all its connecting vertices discovered it's added to the list to not be looked at again
-            visited.add(tE.target);
+            visited.add(tE.getTarget());
             edgesTraversed.add(tE);
 
         }
@@ -51,7 +51,7 @@ public class MadisonMap<T> implements IMadisonMap<T> {
      * @param newEdge New Edge from computeMinimumSpanningTree that's looking to insert
      * @return changes priority queue
      */
-    public PriorityQueue<Edge> checkReplace(PriorityQueue<Edge> pq, Edge newEdge){
+    public PriorityQueue<Edge> checkReplace(PriorityQueue<Edge> pq, IEdge newEdge){
 
         //iterate through nodes in priority queue and update the key for the vertex
         Iterator it = pq.iterator();
@@ -61,7 +61,7 @@ public class MadisonMap<T> implements IMadisonMap<T> {
 
         while (it.hasNext()) {
             Edge edge = (Edge) it.next();
-            if(newEdge.target == edge.target) {
+            if(newEdge.getTarget() == edge.getTarget()) {
                 if (newEdge.compareTo(edge) < 0) {
                     toRemove = edge;
                     remove = true;
