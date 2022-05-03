@@ -10,9 +10,10 @@
  * for the graphical edges utilized within the IMadisonMap class.
  * @author Benjamin Miller
  */
-public class Edge implements IEdge {
+public class Edge implements Comparable<Edge>, IEdge {
     private int weight; // corresponds to the distance between vertexA and vertexB
-    private IVertex[] vertices; // contains the two vertices that this edge connects
+    private IVertex start; // contains the vertex that this edge starts from
+    private IVertex target; // contains the vertex that this edge connects to
     private boolean visited; // Changed to true if included in MST formed by Engineer
 
     /**
@@ -24,19 +25,26 @@ public class Edge implements IEdge {
      * @param weight denotes the weight of the Edge
      */
     public Edge(IVertex A, IVertex B, int weight) {
-        vertices = new IVertex[] { A, B };
+        this.start = A;
+        this.target = B;
         this.weight = weight;
+        this.visited = false;
     }
 
     /**
-     * Accessor method for the Edge "vertices" field.
-     * @return an IVertex[] array denoting the two vertices connected by the Edge object (Note,
-     * index 0 of the array corresponds to the source IVertex object, while index 1 corresponds
-     * to the target IVertex object)
+     * Accessor method for the Edge "start" field.
+     * @return an IVertex denoting the start vertex connected by the Edge object
      */
-    @Override
-    public IVertex[] getVertices() {
-        return vertices;
+    public IVertex getStart() {
+        return start;
+    }
+
+    /**
+     * Accessor method for the Edge "target" field.
+     * @return an IVertex denoting the target vertex connected by the Edge object
+     */
+    public IVertex getTarget() {
+        return start;
     }
 
     /**
@@ -74,4 +82,8 @@ public class Edge implements IEdge {
     }
 
 
+    @Override public int compareTo(Edge other) {
+        int cmp
+
+    }
 }
