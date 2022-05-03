@@ -15,7 +15,7 @@ import java.util.List;
 public interface IVertex {
   /* POSSIBLE FIELDS
    * private String name; // Name of the hotspot location
-   * private List<BIEdge> edges;  // List of all edges connected to the Vertex
+   * private List<IEdge> edges;  // List of all edges connected to the Vertex
    */
   
   // Returns the location name of the IVertex object

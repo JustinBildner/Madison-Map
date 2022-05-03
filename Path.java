@@ -37,7 +37,7 @@ public class Path implements Comparable<Path>, IShortestPath {
      * @param copyPath is the path that is being copied
      * @param extendBy is the edge the copied path is extended by
      */
-    public Path(Path copyPath, Edge extendBy) {
+    public Path(Path copyPath, IEdge extendBy) {
         this.start = copyPath.start;
         this.distance = copyPath.distance;
         this.distance+=extendBy.getWeight();
@@ -67,10 +67,15 @@ public class Path implements Comparable<Path>, IShortestPath {
     }
 
     @Override public List<IVertex> getVertices() {
-        return null;
+        return visited;
     }
 
     @Override public List<IEdge> getEdges() {
-        return null;
+        return edges;
     }
+
+    public List<String> getDataSequence() {
+        return dataSequence;
+    }
+
 }

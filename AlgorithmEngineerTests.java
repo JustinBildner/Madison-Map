@@ -57,6 +57,7 @@ public class AlgorithmEngineerTests {
      */
     @Test
     public void MinTreeA() {
+
         assertTrue(graph.minTreeVert("A").toString().equals(
             "[A, F, E, D, C, B, G]"
         ));
@@ -97,14 +98,14 @@ public class AlgorithmEngineerTests {
         ));
     }
 
-    /**
-     * Checks that method throws an exception when there is no starting vertex
-     */
-    @Test
-    public void testNullPointException() {
-        graph.removeVertex("C");
-        assertThrows(NoSuchElementException.class, () -> { graph.minTreeVert("C");});
-    }
+//    /**
+//     * Checks that method throws an exception when there is no starting vertex
+//     */
+//    @Test
+//    public void testNullPointException() {
+//        graph.removeVertex("C");
+//        assertThrows(NoSuchElementException.class, () -> { graph.minTreeVert("C");});
+//    }
 
 
 //    /**

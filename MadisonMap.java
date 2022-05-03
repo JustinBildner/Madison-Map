@@ -1,15 +1,19 @@
 import java.util.*;
 
-public class MadisonMap implements IMadisonMap<String> {
+public class MadisonMap<String> implements IMadisonMap<String> {
 
     /** Computes Minimum Spanning Tree using Primm's Algorithm
      *
      * @param start data for the start vertex
      * @return ShortestPath object which contains a list of vertices and edges traversed
      */
-    @Override public ShortestPath computeMinimumSpanningTree(String start) {
-        if(containsVertex(start) == false)
+    @Override public ShortestPath computeMinimumSpanningTree(String start)
+    {
+        if(!containsVertex(start)){
+            System.out.println("Yes broken");
             throw new NoSuchElementException();
+        }
+
 
         //Priority Queue that tracks the Edges needed to be visited
         PriorityQueue<IEdge> pq = new PriorityQueue<IEdge>();
@@ -57,10 +61,10 @@ public class MadisonMap implements IMadisonMap<String> {
         Iterator it = pq.iterator();
         boolean add = false;
         boolean remove = false;
-        Edge toRemove = null;
+        IEdge toRemove = null;
 
         while (it.hasNext()) {
-            Edge edge = (Edge) it.next();
+            IEdge edge = (IEdge) it.next();
             if(newEdge.getTarget() == edge.getTarget()) {
                 if (newEdge.compareTo(edge) < 0) {
                     toRemove = edge;
@@ -109,10 +113,12 @@ public class MadisonMap implements IMadisonMap<String> {
     public List<String> minTreeEdge(String start) {
         List<IEdge> edges = computeMinimumSpanningTree(start).getEdges();
         List<String> data = new ArrayList<>();
+
         for (int i = 0; i < edges.size(); i++) {
-            String s = ((Edge) edges.get(i)).getStart().getName();
-            String e = ((Edge) edges.get(i)).getTarget().getName();
-            data.add((String) (s+e));
+//            String s = (String) (edges.get(i)).getStart().getName();
+//
+//            String e = (String) (edges.get(i)).getTarget().getName();
+            data.add((String) ((edges.get(i)).getStart().getName() + (edges.get(i)).getTarget().getName()));
         }
 
 
@@ -146,7 +152,7 @@ public class MadisonMap implements IMadisonMap<String> {
         pq.add(tP);
 
         //List of vertices visited to keep track
-        List<Vertex> visited = new ArrayList<Vertex>();
+        List<IVertex> visited = new ArrayList<>();
 
         Path eTP;
 
@@ -155,7 +161,7 @@ public class MadisonMap implements IMadisonMap<String> {
 
             //End vertex has been found
             if(tP.end.getName().equals(end)) {
-                tP.visited = visited;
+//                tP.visited = visited;
                 return tP;
             }
 
@@ -172,9 +178,9 @@ public class MadisonMap implements IMadisonMap<String> {
             //Change temp path to the shortest path from the priority queue
             eTP = tP;
             tP = pq.poll();
-//            for(int i = 0; i < tP.end.edgesLeaving.size(); i++){
-//                if(tP.end == ((Edge)eTP.end.edgesLeaving.get(i)).target){
-//                    pq.add(new Path(tP, (Edge) tP.end.edgesLeaving.get(i)));
+//            for(int i = 0; i < tP.end.getEdges().size(); i++){
+//                if(tP.end == ((Edge)eTP.end.getEdges().get(i)).target){
+//                    pq.add(new Path(tP, (Edge) tP.end.getEdges().get(i)));
 //                }
 //            }
 
@@ -183,12 +189,12 @@ public class MadisonMap implements IMadisonMap<String> {
         throw new NoSuchElementException();
     }
 
-    public Hashtable<T, Vertex> vertices; // holds graph verticies, key=data
+    public Hashtable<String, IVertex> vertices; // holds graph verticies, key=data
     public MadisonMap() {
         vertices = new Hashtable<>();
     }
 
-    public Hashtable<T, Vertex> getVertices()
+    public Hashtable<String, IVertex> getVertices()
     {
         return this.vertices;
     }
@@ -201,11 +207,11 @@ public class MadisonMap implements IMadisonMap<String> {
      *     already in the graph
      * @throws NullPointerException if data is null
      */
-    public boolean insertVertex(T data) {
+    public boolean insertVertex(String data) {
         if(data == null)
             throw new NullPointerException("Cannot add null vertex");
         if(vertices.containsKey(data)) return false; // duplicate values are not allowed
-        vertices.put(data, new Vertex(data));
+        vertices.put(data, new Vertex((java.lang.String) data));
         return true;
     }
 
@@ -218,20 +224,19 @@ public class MadisonMap implements IMadisonMap<String> {
      * @return true if a vertex with *data* has been removed, false if it was not in the graph
      * @throws NullPointerException if data is null
      */
-    public boolean removeVertex(T data) {
+    public boolean removeVertex(String data) {
         if(data == null) throw new NullPointerException("Cannot remove null vertex");
-        Vertex removeVertex = vertices.get(data);
+        IVertex removeVertex = vertices.get(data);
         if(removeVertex == null) return false; // vertex not found within graph
         // search all vertices for edges targeting removeVertex
-        for(Vertex v : vertices.values()) {
-            Edge removeEdge = null;
-            for(Object e : v.edgesLeaving) {
-                e = (Edge) e;
-                if (((Edge) e).target == removeVertex)
-                    removeEdge = (Edge) e;
+        for(IVertex v : vertices.values()) {
+            IEdge removeEdge = null;
+            for(IEdge e : v.getEdges()) {
+                if (e.getTarget() == removeVertex)
+                    removeEdge = e;
             }
             // and remove any such edges that are found
-            if(removeEdge != null) v.edgesLeaving.remove(removeEdge);
+            if(removeEdge != null) v.getEdges().remove(removeEdge);
         }
         // finally remove the vertex and all edges contained within it
         return vertices.remove(data) != null;
@@ -249,26 +254,25 @@ public class MadisonMap implements IMadisonMap<String> {
      *     or if its weight is < 0
      * @throws NullPointerException if either source or target or both are null
      */
-    public boolean insertEdge(T source, T target, int weight) {
+    public boolean insertEdge(String source, String target, int weight) {
         if(source == null || target == null)
             throw new NullPointerException("Cannot add edge with null source or target");
-        Vertex sourceVertex = this.vertices.get(source);
-        Vertex targetVertex = this.vertices.get(target);
+        IVertex sourceVertex = this.vertices.get(source);
+        IVertex targetVertex = this.vertices.get(target);
         if(sourceVertex == null || targetVertex == null)
             throw new IllegalArgumentException("Cannot add edge with vertices that do not exist");
         if(weight < 0)
             throw new IllegalArgumentException("Cannot add edge with negative weight");
         // handle cases where edge already exists between these verticies
-        for(Object e : sourceVertex.edgesLeaving){
-            e = (Edge)e;
-            if(((Edge) e).target == targetVertex) {
-                if(((Edge) e).weight == weight) return false; // edge already exists
-                else ((Edge) e).weight = weight; // otherwise update weight of existing edge
+        for(IEdge e : sourceVertex.getEdges()){
+            if(e.getTarget() == targetVertex) {
+                if(e.getWeight() == weight) return false; // edge already exists
+                else e.setWeight(weight); // otherwise update weight of existing edge
                 return true;
             }
         }
         // otherwise add new edge to sourceVertex
-        sourceVertex.edgesLeaving.add(new Edge(sourceVertex, targetVertex,weight));
+        sourceVertex.getEdges().add(new Edge(sourceVertex, targetVertex,weight));
         return true;
     }
 
@@ -281,19 +285,19 @@ public class MadisonMap implements IMadisonMap<String> {
      * @throws IllegalArgumentException if either source or target or both are not in the graph
      * @throws NullPointerException if either source or target or both are null
      */
-    public boolean removeEdge(T source, T target) {
+    public boolean removeEdge(String source, String target) {
         if(source == null || target == null) throw new NullPointerException("Cannot remove edge with null source or target");
-        Vertex sourceVertex = this.vertices.get(source);
-        Vertex targetVertex = this.vertices.get(target);
+        IVertex sourceVertex = this.vertices.get(source);
+        IVertex targetVertex = this.vertices.get(target);
         if(sourceVertex == null || targetVertex == null) throw new IllegalArgumentException("Cannot remove edge with vertices that do not exist");
         // find edge to remove
         Edge removeEdge = null;
-        for(Object e : sourceVertex.edgesLeaving) {
-            if (((Edge)e).target == targetVertex)
+        for(IEdge e : sourceVertex.getEdges()) {
+            if ((e.getTarget() == targetVertex))
                 removeEdge = (Edge) e;
         }
         if(removeEdge != null) { // remove edge that is successfully found
-            sourceVertex.edgesLeaving.remove(removeEdge);
+            sourceVertex.getEdges().remove(removeEdge);
             return true;
         }
         return false; // otherwise return false to indicate failure to find
@@ -306,7 +310,7 @@ public class MadisonMap implements IMadisonMap<String> {
      * @return true if data item is stored in a vertex of the graph, false otherwise
      * @throws NullPointerException if *data* is null
      */
-    public boolean containsVertex(T data) {
+    public boolean containsVertex(String data) {
         if(data == null) throw new NullPointerException("Cannot contain null data vertex");
         return vertices.containsKey(data);
     }
@@ -319,13 +323,13 @@ public class MadisonMap implements IMadisonMap<String> {
      * @return true if the edge is in the graph, false if it is not in the graph
      * @throws NullPointerException if either source or target or both are null
      */
-    public boolean containsEdge(T source, T target) {
+    public boolean containsEdge(String source, String target) {
         if(source == null || target == null) throw new NullPointerException("Cannot contain edge adjacent to null data");
-        Vertex sourceVertex = vertices.get(source);
-        Vertex targetVertex = vertices.get(target);
+        IVertex sourceVertex = vertices.get(source);
+        IVertex targetVertex = vertices.get(target);
         if(sourceVertex == null) return false;
-        for(Object e : sourceVertex.edgesLeaving)
-            if(((Edge)e).target == targetVertex)
+        for(IEdge e : sourceVertex.getEdges())
+            if((e.getTarget() == targetVertex))
                 return true;
         return false;
     }
@@ -342,10 +346,10 @@ public class MadisonMap implements IMadisonMap<String> {
      */
     public int getWeight(String source, String target) {
         if(source == null || target == null) throw new NullPointerException("Cannot contain weighted edge adjacent to null data");
-        Vertex sourceVertex = vertices.get(source);
-        Vertex targetVertex = vertices.get(target);
+        IVertex sourceVertex = vertices.get(source);
+        IVertex targetVertex = vertices.get(target);
         if(sourceVertex == null || targetVertex == null) throw new IllegalArgumentException("Cannot retrieve weight of edge between vertices that do not exist");
-        for(Object e : sourceVertex.getEdges())
+        for(IEdge e : sourceVertex.getEdges())
             if(((Edge)e).getTarget() == targetVertex)
                 return ((Edge) e).getWeight();
         throw new NoSuchElementException("No directed edge found between these vertices");
@@ -358,7 +362,7 @@ public class MadisonMap implements IMadisonMap<String> {
      */
     public int getEdgeCount() {
         int edgeCount = 0;
-        for(Vertex v : vertices.values())
+        for(IVertex v : vertices.values())
             edgeCount += v.getEdges().size();
         return edgeCount;
     }
@@ -398,7 +402,7 @@ public class MadisonMap implements IMadisonMap<String> {
      *     including when no vertex containing start or end can be found
      */
     public List<String> shortestPath(String start, String end) {
-        return dijkstrasShortestPath(start,end).dataSequence;
+        return (List<String>) dijkstrasShortestPath(start,end).getDataSequence();
     }
 
     /**

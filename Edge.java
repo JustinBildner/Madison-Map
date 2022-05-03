@@ -10,7 +10,7 @@
  * for the graphical edges utilized within the IMadisonMap class.
  * @author Benjamin Miller
  */
-public class Edge implements Comparable<Edge>, IEdge {
+public class Edge implements IEdge {
     private int weight; // corresponds to the distance between vertexA and vertexB
     private IVertex start; // contains the vertex that this edge starts from
     private IVertex target; // contains the vertex that this edge connects to
@@ -82,6 +82,7 @@ public class Edge implements Comparable<Edge>, IEdge {
     }
 
 
+
     /**
      * Allows the natural ordering of paths to be increasing with path distance.
      * When path distance is equal, the string comparison of end vertex data is used to break ties.
@@ -90,8 +91,8 @@ public class Edge implements Comparable<Edge>, IEdge {
      *         +1 when this path has a larger distance that the other,
      *         and the comparison of end vertex data in string form when these distances are tied
      */
-    public int compareTo(Edge other) {
-        int cmp = this.weight - other.weight;
+    public int compareTo(IEdge other) {
+        int cmp = this.weight - other.getWeight();
         if(cmp != 0) return cmp; // use path distance as the natural ordering
         // when path distances are equal, break ties by comparing the string
         // representation of data in the end vertex of each path
