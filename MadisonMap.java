@@ -1,6 +1,12 @@
 import java.util.*;
 
-public class MadisonMap<String> implements IMadisonMap<String> {
+public class MadisonMap implements IMadisonMap<String> {
+
+    public Hashtable<String, IVertex> vertices; // holds graph verticies, key=data
+    public MadisonMap() {
+        vertices = new Hashtable<>();
+    }
+
 
     /** Computes Minimum Spanning Tree using Primm's Algorithm
      *
@@ -22,9 +28,12 @@ public class MadisonMap<String> implements IMadisonMap<String> {
 
         IEdge tE = new Edge(vertices.get(start), vertices.get(start), 0);
 
-        for(int i = 0; i < tE.getTarget().getEdges().size(); i++){
-                pq.add(tE.getTarget().getEdges().get(i));
-            }
+        for(int i =0; i < tE.getTarget().getEdges().size(); i++)
+        {
+            pq.add(tE.getTarget().getEdges().get(i));
+        }
+
+//        pq.addAll(tE.getTarget().getEdges());
 
         visited.add(tE.getTarget());
 
@@ -32,6 +41,7 @@ public class MadisonMap<String> implements IMadisonMap<String> {
         while(edgesTraversed.size() < getVertexCount()-1){
 
             tE = pq.poll();
+
 
             //Go through every edge that is encounters checking to see if it should be added to Priority Queue
             for(int i = 0; i < tE.getTarget().getEdges().size(); i++){
@@ -98,7 +108,7 @@ public class MadisonMap<String> implements IMadisonMap<String> {
         List<String> data = new ArrayList<>();
         for(IVertex v: vertices)
         {
-            data.add((String)v.getName());
+            data.add(v.getName());
         }
         return data;
     }
@@ -114,11 +124,11 @@ public class MadisonMap<String> implements IMadisonMap<String> {
         List<IEdge> edges = computeMinimumSpanningTree(start).getEdges();
         List<String> data = new ArrayList<>();
 
-        for (int i = 0; i < edges.size(); i++) {
-//            String s = (String) (edges.get(i)).getStart().getName();
-//
-//            String e = (String) (edges.get(i)).getTarget().getName();
-            data.add((String) ((edges.get(i)).getStart().getName() + (edges.get(i)).getTarget().getName()));
+        for (IEdge edge : edges) {
+            //            String s = (String) (edges.get(i)).getStart().getName();
+            //
+            //            String e = (String) (edges.get(i)).getTarget().getName();
+            data.add((edge.getStart().getName() + edge.getTarget().getName()));
         }
 
 
@@ -189,10 +199,7 @@ public class MadisonMap<String> implements IMadisonMap<String> {
         throw new NoSuchElementException();
     }
 
-    public Hashtable<String, IVertex> vertices; // holds graph verticies, key=data
-    public MadisonMap() {
-        vertices = new Hashtable<>();
-    }
+
 
     public Hashtable<String, IVertex> getVertices()
     {
@@ -211,7 +218,7 @@ public class MadisonMap<String> implements IMadisonMap<String> {
         if(data == null)
             throw new NullPointerException("Cannot add null vertex");
         if(vertices.containsKey(data)) return false; // duplicate values are not allowed
-        vertices.put(data, new Vertex((java.lang.String) data));
+        vertices.put(data, new Vertex(data));
         return true;
     }
 
@@ -272,7 +279,7 @@ public class MadisonMap<String> implements IMadisonMap<String> {
             }
         }
         // otherwise add new edge to sourceVertex
-        sourceVertex.getEdges().add(new Edge(sourceVertex, targetVertex,weight));
+        sourceVertex.addConnectingEdge(targetVertex, weight);
         return true;
     }
 
@@ -291,10 +298,10 @@ public class MadisonMap<String> implements IMadisonMap<String> {
         IVertex targetVertex = this.vertices.get(target);
         if(sourceVertex == null || targetVertex == null) throw new IllegalArgumentException("Cannot remove edge with vertices that do not exist");
         // find edge to remove
-        Edge removeEdge = null;
+        IEdge removeEdge = null;
         for(IEdge e : sourceVertex.getEdges()) {
             if ((e.getTarget() == targetVertex))
-                removeEdge = (Edge) e;
+                removeEdge = e;
         }
         if(removeEdge != null) { // remove edge that is successfully found
             sourceVertex.getEdges().remove(removeEdge);
@@ -350,8 +357,8 @@ public class MadisonMap<String> implements IMadisonMap<String> {
         IVertex targetVertex = vertices.get(target);
         if(sourceVertex == null || targetVertex == null) throw new IllegalArgumentException("Cannot retrieve weight of edge between vertices that do not exist");
         for(IEdge e : sourceVertex.getEdges())
-            if(((Edge)e).getTarget() == targetVertex)
-                return ((Edge) e).getWeight();
+            if(e.getTarget() == targetVertex)
+                return e.getWeight();
         throw new NoSuchElementException("No directed edge found between these vertices");
     }
 

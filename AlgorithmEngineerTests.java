@@ -12,14 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class AlgorithmEngineerTests {
 
-    private MadisonMap<String> graph;
+    private MadisonMap graph;
 
     /**
      * Instantiate example graph.
      */
     @BeforeEach
     public void createGraph() {
-        graph = new MadisonMap<>();
+        graph = new MadisonMap();
         // insert vertices A-F
         graph.insertVertex("A");
         graph.insertVertex("B");
@@ -57,7 +57,6 @@ public class AlgorithmEngineerTests {
      */
     @Test
     public void MinTreeA() {
-
         assertTrue(graph.minTreeVert("A").toString().equals(
             "[A, F, E, D, C, B, G]"
         ));

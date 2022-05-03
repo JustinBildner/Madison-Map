@@ -12,14 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class GraphTest {
 
-    private MadisonMap<String> graph;
+    private MadisonMap graph;
 
     /**
      * Instantiate graph from last week's shortest path activity.
      */
     @BeforeEach
     public void createGraph() {
-        graph = new MadisonMap<>();
+        graph = new MadisonMap();
         // insert vertices A-F
         graph.insertVertex("A");
         graph.insertVertex("B");
