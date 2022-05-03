@@ -12,14 +12,14 @@ public class MadisonMap implements IMadisonMap<String> {
             throw new NoSuchElementException();
 
         //Priority Queue that tracks the Edges needed to be visited
-        PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
+        PriorityQueue<IEdge> pq = new PriorityQueue<IEdge>();
         List<IVertex> visited = new ArrayList<>();
         List<IEdge> edgesTraversed = new ArrayList<>();
 
-        Edge tE = new Edge(vertices.get(start), vertices.get(start), 0);
+        IEdge tE = new Edge(vertices.get(start), vertices.get(start), 0);
 
         for(int i = 0; i < tE.getTarget().getEdges().size(); i++){
-                pq.add((Edge) tE.getTarget().getEdges().get(i));
+                pq.add(tE.getTarget().getEdges().get(i));
             }
 
         visited.add(tE.getTarget());
@@ -51,7 +51,7 @@ public class MadisonMap implements IMadisonMap<String> {
      * @param newEdge New Edge from computeMinimumSpanningTree that's looking to insert
      * @return changes priority queue
      */
-    public PriorityQueue<Edge> checkReplace(PriorityQueue<Edge> pq, IEdge newEdge){
+    public PriorityQueue<IEdge> checkReplace(PriorityQueue<IEdge> pq, IEdge newEdge){
 
         //iterate through nodes in priority queue and update the key for the vertex
         Iterator it = pq.iterator();
@@ -89,12 +89,12 @@ public class MadisonMap implements IMadisonMap<String> {
      * @param start starting node
      * @return list of string data
      */
-    public List<T> minTreeVert(T start) {
-        List<IVertex> vertices = computeMinimumSpanningTree(start).vertices;
-        List<T> data = new ArrayList<>();
+    public List<String> minTreeVert(String start) {
+        List<IVertex> vertices = computeMinimumSpanningTree(start).getVertices();
+        List<String> data = new ArrayList<>();
         for(IVertex v: vertices)
         {
-            data.add((T)v.getName());
+            data.add((String)v.getName());
         }
         return data;
     }
@@ -106,13 +106,13 @@ public class MadisonMap implements IMadisonMap<String> {
      * @param start starting node
      * @return list of string data
      */
-    public List<T> minTreeEdge(T start) {
-        List<IEdge> edges = computeMinimumSpanningTree(start).edges;
-        List<T> data = new ArrayList<>();
+    public List<String> minTreeEdge(String start) {
+        List<IEdge> edges = computeMinimumSpanningTree(start).getEdges();
+        List<String> data = new ArrayList<>();
         for (int i = 0; i < edges.size(); i++) {
             String s = ((Edge) edges.get(i)).getStart().getName();
             String e = ((Edge) edges.get(i)).getTarget().getName();
-            data.add((T) (s+e));
+            data.add((String) (s+e));
         }
 
 
@@ -130,7 +130,7 @@ public class MadisonMap implements IMadisonMap<String> {
      * @throws NoSuchElementException when no path from start to end can be found,
      *     including when no vertex containing start or end can be found
      */
-    public Path dijkstrasShortestPath(T start, T end) {
+    public Path dijkstrasShortestPath(String start, String end) {
         //Start or End is null or they don't exist within the graph
         if(start == null || end == null || containsVertex(start) == false || containsVertex(end) ==false)
             throw new NoSuchElementException();
@@ -154,15 +154,15 @@ public class MadisonMap implements IMadisonMap<String> {
         while(pq.isEmpty() == false){
 
             //End vertex has been found
-            if(tP.end.data.equals(end)) {
+            if(tP.end.getName().equals(end)) {
                 tP.visited = visited;
                 return tP;
             }
 
             //Go through every edge that is encounters checking to see if shortest path to vertices has been found yet
-            for(int i = 0; i < tP.end.edgesLeaving.size(); i++){
-                if(!visited.contains(((Edge)tP.end.edgesLeaving.get(i)).target)){
-                    pq.add(new Path(tP, (Edge) tP.end.edgesLeaving.get(i)));
+            for(int i = 0; i < tP.end.getEdges().size(); i++){
+                if(!visited.contains((tP.end.getEdges().get(i)).getTarget())){
+                    pq.add(new Path(tP, tP.end.getEdges().get(i)));
                 }
             }
 
@@ -340,14 +340,14 @@ public class MadisonMap implements IMadisonMap<String> {
      * @throws NullPointerException if either sourceVertex or targetVertex or both are null
      * @throws NoSuchElementException if edge is not in the graph
      */
-    public int getWeight(T source, T target) {
+    public int getWeight(String source, String target) {
         if(source == null || target == null) throw new NullPointerException("Cannot contain weighted edge adjacent to null data");
         Vertex sourceVertex = vertices.get(source);
         Vertex targetVertex = vertices.get(target);
         if(sourceVertex == null || targetVertex == null) throw new IllegalArgumentException("Cannot retrieve weight of edge between vertices that do not exist");
-        for(Object e : sourceVertex.edgesLeaving)
-            if(((Edge)e).target == targetVertex)
-                return ((Edge) e).weight;
+        for(Object e : sourceVertex.getEdges())
+            if(((Edge)e).getTarget() == targetVertex)
+                return ((Edge) e).getWeight();
         throw new NoSuchElementException("No directed edge found between these vertices");
     }
 
@@ -359,7 +359,7 @@ public class MadisonMap implements IMadisonMap<String> {
     public int getEdgeCount() {
         int edgeCount = 0;
         for(Vertex v : vertices.values())
-            edgeCount += v.edgesLeaving.size();
+            edgeCount += v.getEdges().size();
         return edgeCount;
     }
 
@@ -397,7 +397,7 @@ public class MadisonMap implements IMadisonMap<String> {
      * @throws NoSuchElementException when no path from start to end can be found
      *     including when no vertex containing start or end can be found
      */
-    public List<T> shortestPath(T start, T end) {
+    public List<String> shortestPath(String start, String end) {
         return dijkstrasShortestPath(start,end).dataSequence;
     }
 
@@ -412,7 +412,7 @@ public class MadisonMap implements IMadisonMap<String> {
      * @throws NoSuchElementException when no path from start to end can be found
      *     including when no vertex containing start or end can be found
      */
-    public int getPathCost(T start, T end) {
+    public int getPathCost(String start, String end) {
         return dijkstrasShortestPath(start, end).distance;
     }
 

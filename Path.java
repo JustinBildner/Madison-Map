@@ -9,11 +9,11 @@ import java.util.List;
  * eliminates the need for tracing paths backwards from the destination vertex to the
  * starting vertex at the end of the algorithm.
  */
-public class Path<T> implements Comparable<Path>, IShortestPath {
-    public Vertex start; // first vertex within path
+public class Path implements Comparable<Path>, IShortestPath {
+    public IVertex start; // first vertex within path
     public int distance; // sumed weight of all edges in path
-    public List<T> dataSequence; // ordered sequence of data from vertices in path
-    public Vertex end; // last vertex within path
+    public List<String> dataSequence; // ordered sequence of data from vertices in path
+    public IVertex end; // last vertex within path
     public List<IVertex> visited;
     public List<IEdge> edges;
 
@@ -22,11 +22,11 @@ public class Path<T> implements Comparable<Path>, IShortestPath {
      * the start and end of the path, it's initial distance is zero.
      * @param start is the first vertex on this path
      */
-    public Path(Vertex start) {
+    public Path(IVertex start) {
         this.start = start;
         this.distance = 0;
         this.dataSequence = new LinkedList<>();
-        this.dataSequence.add((T) start.data);
+        this.dataSequence.add(start.getName());
         this.end = start;
     }
 
@@ -40,14 +40,14 @@ public class Path<T> implements Comparable<Path>, IShortestPath {
     public Path(Path copyPath, Edge extendBy) {
         this.start = copyPath.start;
         this.distance = copyPath.distance;
-        this.distance+=extendBy.weight;
+        this.distance+=extendBy.getWeight();
         this.dataSequence = new LinkedList<>();
         for(int i =0; i <copyPath.dataSequence.size(); i++)
         {
-            this.dataSequence.add((T) copyPath.dataSequence.get(i));
+            this.dataSequence.add(copyPath.dataSequence.get(i));
         }
-        dataSequence.add((T) extendBy.target.data);
-        this.end = extendBy.target;
+        dataSequence.add(extendBy.getTarget().getName());
+        this.end = extendBy.getTarget();
     }
 
     /**
@@ -63,7 +63,7 @@ public class Path<T> implements Comparable<Path>, IShortestPath {
         if(cmp != 0) return cmp; // use path distance as the natural ordering
         // when path distances are equal, break ties by comparing the string
         // representation of data in the end vertex of each path
-        return this.end.data.toString().compareTo(other.end.data.toString());
+        return this.end.getName().toString().compareTo(other.end.getName().toString());
     }
 
     @Override public List<IVertex> getVertices() {

@@ -10,7 +10,7 @@
  * @author Benjamin Miller
  *
  */
-public interface IEdge {
+public interface IEdge extends Comparable<Edge> {
   /* POSSIBLE FIELDS
   private int weight; // corresponds to the distance between vertexA and vertexB
   private IVertex[] vertices; // contains the two vertices that this edge connects
