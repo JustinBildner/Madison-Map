@@ -97,14 +97,14 @@ public class AlgorithmEngineerTests {
         ));
     }
 
-//    /**
-//     * Checks that method throws an exception when there is no starting vertex
-//     */
-//    @Test
-//    public void testNullPointException() {
-//        graph.removeVertex("C");
-//        assertThrows(NoSuchElementException.class, () -> { graph.minTreeVert("C");});
-//    }
+    /**
+     * Checks that method throws an exception when there is no starting vertex
+     */
+    @Test
+    public void testNullPointException() {
+        graph.removeVertex("C");
+        assertThrows(NoSuchElementException.class, () -> { graph.minTreeVert("C");});
+    }
 
 
 //    /**

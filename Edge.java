@@ -44,7 +44,7 @@ public class Edge implements IEdge {
      * @return an IVertex denoting the target vertex connected by the Edge object
      */
     public IVertex getTarget() {
-        return start;
+        return target;
     }
 
     /**

@@ -14,8 +14,8 @@ import java.util.List;
  * @author Benjamin Miller
  */
 public class Vertex implements IVertex {
-  private String name; // Name of the hotspot location
-  private List<IEdge> edges;  // List of all edges connected to the Vertex
+  public String name; // Name of the hotspot location
+  public List<IEdge> edges;  // List of all edges connected to the Vertex
   
   /**
    * Constructor which both instantiates the "name" field to its corresponding parameter and 
@@ -54,6 +54,6 @@ public class Vertex implements IVertex {
    */
   @Override
   public void addConnectingEdge(IVertex target, int weight) {
-    edges.add(new Edge(this, target, weight));
+    edges.add(new Edge( this, target, weight));
   }
 }

@@ -34,9 +34,9 @@ public class ShortestPath implements IShortestPath {
       edges = new LinkedList<>();
       
     // Traverse the list of vertices to access their individual lists of edges
-      for(IVertex vertex : vertices) {
+      for(int i = 0; i < vertices.size()-1; i++) {
         // Obtain the edges of the current IVertex object
-          List<IEdge> allEdges = vertex.getEdges();
+          List<IEdge> allEdges = vertices.get(i).getEdges();
         
         // Traverse the list of edges stored within the current IVertex object
           for(IEdge edge : allEdges) {
@@ -44,9 +44,8 @@ public class ShortestPath implements IShortestPath {
              * the edge to the "edges" field. Finally, set the "visited" status of the edge to 
              * false to prevent interference with future shortest path computations
              */
-            if(edge.isVisited()) {
+            if(edge.getTarget() == vertices.get(i+1)) {
               edges.add(edge);
-              edge.setVisited(false);
             }
           }
       }

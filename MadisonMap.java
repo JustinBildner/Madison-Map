@@ -16,10 +16,8 @@ public class MadisonMap implements IMadisonMap<String> {
     @Override public ShortestPath computeMinimumSpanningTree(String start)
     {
         if(!containsVertex(start)){
-            System.out.println("Yes broken");
             throw new NoSuchElementException();
         }
-
 
         //Priority Queue that tracks the Edges needed to be visited
         PriorityQueue<IEdge> pq = new PriorityQueue<IEdge>();
@@ -41,6 +39,7 @@ public class MadisonMap implements IMadisonMap<String> {
         while(edgesTraversed.size() < getVertexCount()-1){
 
             tE = pq.poll();
+            tE.setVisited(true);
 
 
             //Go through every edge that is encounters checking to see if it should be added to Priority Queue
@@ -150,50 +149,39 @@ public class MadisonMap implements IMadisonMap<String> {
         //Start or End is null or they don't exist within the graph
         if(start == null || end == null || containsVertex(start) == false || containsVertex(end) ==false)
             throw new NoSuchElementException();
-
         //First path initialization which only contains the start vertex
         Path tP = new Path(vertices.get(start));
-
-
         //Priority Queue that tracks the paths visited so far
         PriorityQueue<Path> pq = new PriorityQueue<Path>();
-
         //Add the first path to the priority queue
         pq.add(tP);
-
         //List of vertices visited to keep track
         List<IVertex> visited = new ArrayList<>();
-
-        Path eTP;
+//        Path eTP;
 
         //While loop until the shortest path found between start and end is found
         while(pq.isEmpty() == false){
-
             //End vertex has been found
             if(tP.end.getName().equals(end)) {
 //                tP.visited = visited;
                 return tP;
             }
-
             //Go through every edge that is encounters checking to see if shortest path to vertices has been found yet
             for(int i = 0; i < tP.end.getEdges().size(); i++){
                 if(!visited.contains((tP.end.getEdges().get(i)).getTarget())){
                     pq.add(new Path(tP, tP.end.getEdges().get(i)));
                 }
             }
-
             //After a vertex has been visited and all its connecting vertices discovered it's added to the list to not be looked at again
             visited.add(tP.end);
-
             //Change temp path to the shortest path from the priority queue
-            eTP = tP;
+//            eTP = tP;
             tP = pq.poll();
 //            for(int i = 0; i < tP.end.getEdges().size(); i++){
 //                if(tP.end == ((Edge)eTP.end.getEdges().get(i)).target){
 //                    pq.add(new Path(tP, (Edge) tP.end.getEdges().get(i)));
 //                }
 //            }
-
         }
         //When there is no path between the start and end nodes then NoSuchElementException will be thrown
         throw new NoSuchElementException();
@@ -264,8 +252,8 @@ public class MadisonMap implements IMadisonMap<String> {
     public boolean insertEdge(String source, String target, int weight) {
         if(source == null || target == null)
             throw new NullPointerException("Cannot add edge with null source or target");
-        IVertex sourceVertex = this.vertices.get(source);
-        IVertex targetVertex = this.vertices.get(target);
+        Vertex sourceVertex = (Vertex) this.vertices.get(source);
+        Vertex targetVertex = (Vertex) this.vertices.get(target);
         if(sourceVertex == null || targetVertex == null)
             throw new IllegalArgumentException("Cannot add edge with vertices that do not exist");
         if(weight < 0)
@@ -279,7 +267,7 @@ public class MadisonMap implements IMadisonMap<String> {
             }
         }
         // otherwise add new edge to sourceVertex
-        sourceVertex.addConnectingEdge(targetVertex, weight);
+        sourceVertex.edges.add(new Edge(sourceVertex, targetVertex, weight));
         return true;
     }
 
