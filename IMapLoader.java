@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.Hashtable;
 
 /**
  * MapLoader Interface which defines the necessary methods for the MapLoader object
