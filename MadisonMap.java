@@ -3,8 +3,8 @@ import java.util.*;
 public class MadisonMap implements IMadisonMap<String> {
 
     public Hashtable<String, IVertex> vertices; // holds graph verticies, key=data
-    public MadisonMap() {
-        vertices = new Hashtable<>();
+    public MadisonMap(Hashtable<String, IVertex> vertices) {
+        this.vertices = vertices;
     }
 
 

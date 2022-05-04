@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.Hashtable;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -19,7 +20,8 @@ public class AlgorithmEngineerTests {
      */
     @BeforeEach
     public void createGraph() {
-        graph = new MadisonMap();
+        Hashtable<String, IVertex> vertices = new Hashtable<>();
+        graph = new MadisonMap(vertices);
         // insert vertices A-F
         graph.insertVertex("A");
         graph.insertVertex("B");
