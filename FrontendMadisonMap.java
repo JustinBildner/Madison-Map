@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * This class defines a program that finds the shortest path between points, or "hotspots", in
  * Madison
- *
+ * 
  * @author Nate Colburn
  *
  */
@@ -19,18 +19,18 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
 
   /**
    * This method displays the shortest path from one point to another
-   *
+   * 
    * @param start A string for the starting destination
    * @param end   A string for the ending destination
    */
   @Override
   public void DisplayShortestPath(String start, String end) {
-    MadisonMapBackend map = new MadisonMapBackend();
-    IShortestPath shortestPath = map.getShortestPath(start, end);
+    BackendMadisonMap map = new BackendMadisonMap();
+    ShortestPath shortestPath = map.getShortestPath(start, end);
     String pathNames = "";
     int walkingDistance = 0;
-    for (int i = 0; i < shortestPath.getEdges().size(); i++) {
-      walkingDistance += shortestPath.getEdges().get(i).getWeight(); // Calculate walking distance
+    for (int i = 0; i < shortestPath.edges.size(); i++) {
+      walkingDistance += shortestPath.edges.get(i).getWeight(); // Calculate walking distance
     }
     pathNames += start + " --> " + shortestPath.getEdges().get(0).getName() + " --> " + end;
     pathNames = pathNames.substring(0, pathNames.length()); // Trim the last " to " off the end
@@ -40,12 +40,12 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
 
   /**
    * This method displays the minimum path between multiple hotspots
-   *
+   * 
    * @param vertices An array of strings, the names of the hotspots on the map
    */
   @Override
   public void DisplayMinimumTree(String vertices) {
-    MadisonMapBackend map = new MadisonMapBackend();
+    BackendMadisonMap map = new BackendMadisonMap();
     ShortestPath shortestPath = map.getMinimumSpanningTree(vertices);
     String pathNames = "";
     System.out.println(shortestPath.getEdges().size());

@@ -1,6 +1,7 @@
 run: MadisonMap.class FrontendMadisonMap.class BackendMadisonMap.class
 
 runTests: runFrontendDeveloperTests runAlgorithmEngineerTests runBackendDeveloperTests runDataWranglerTests
+	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
 runAlgorithmEngineerTests: MadisonMap.class AlgorithmEngineerTests.class
 	java -jar junit5.jar --class-path . --scan-classpath -n AlgorithmEngineerTests
@@ -27,9 +28,6 @@ ShortestPath.class: ShortestPath.java IShortestPath.java
 
 run: FDBackendMadisonMap.class FrontendMadisonMap.class FDEdge.class FDIEdge.class FDIShortestPath.class FDIVertex.class FDShortestPath.class FDVertex.class
 	java FrontendMadisonMap
-
-runTests: BackendDeveloperTests.class
-	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
 BackendDeveloperTests.class: Edge.class IEdge.class BIMadisonMap.class BMadisonMap.class BIMapLoader.class BMapLoader.class IShortestPath.class ShortestPath.class GraphADT.class IMadisonMapBackend.class MadisonMapBackend.class BackendDeveloperTests.java
 	javac -cp .:junit5.jar BackendDeveloperTests.java
