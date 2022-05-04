@@ -25,8 +25,8 @@ public class BackendDeveloperTests {
       MadisonMapBackend backend = new MadisonMapBackend(data);
     
     // Verify Correct Traversal of Inputed Data to Create the IMadisonMap Object
-      assertEquals(backend.map.getVertexCount(), 6);
-      assertEquals(backend.map.getEdgeCount(), 11);
+      assertEquals(6, backend.map.getVertexCount());
+      assertEquals(11, backend.map.getEdgeCount());
   }
   
   /**
@@ -47,8 +47,8 @@ public class BackendDeveloperTests {
   
     // Verify the Functionality of the Constructor Illegal Argument Handling
       assertTrue(passed);
-    
   }
+  
   /**
    * Verifies the functionality of the MadisonMapBackend getShortestPath() method prior to 
    * setting any edges as included along the computed shortest path.
@@ -62,11 +62,11 @@ public class BackendDeveloperTests {
     
     // Create MadisonMapBackend Object and Invoke the getShortestPath() Method
       MadisonMapBackend backend = new MadisonMapBackend(data);
-      BIShortestPath path = backend.getShortestPath("start", "end");
+      IShortestPath path = backend.getShortestPath("start", "end");
     
     // Verify the Functionality of the getShortestPath() Method
-      assertEquals(path.getVertices().size(), 6);
-      assertEquals(path.getEdges().size(), 0);
+      assertEquals(6, path.getVertices().size());
+      assertEquals(1, path.getEdges().size());
   }
   
   /**
@@ -83,17 +83,14 @@ public class BackendDeveloperTests {
     // Create MadisonMapBackend Object
       MadisonMapBackend backend = new MadisonMapBackend(data);
       
-    // Alter the "visited" Status of All Edges Stored in the IMadisonMap Object
-      for(BIVertex vertex : backend.map.getVertices().values()) { // Traverse vertices Hashtable
-        for(BIEdge edge : vertex.getEdges()) { // Traverse each vertex "edges" list
-          edge.setVisited(true); // Set each edge as visited
-        }
-      }
+    // Remove Edges to Ensure Correct New Path Created
+      backend.map.getVertices().get("A")
+        .addConnectingEdge(backend.map.getVertices().get("F"), 1);
       
     // Invoke the getShortestPath() Method and Verify its Functionality
-      BIShortestPath path = backend.getShortestPath("start", "end");
-      assertEquals(path.getVertices().size(), 6);
-      assertEquals(path.getEdges().size(), 11);
+      IShortestPath path = backend.getShortestPath("start", "end");
+      assertEquals(6, path.getVertices().size());
+      assertEquals(2, path.getEdges().size());
   }
   
   /**
@@ -109,11 +106,11 @@ public class BackendDeveloperTests {
   
     // Create MadisonMapBackend Object and Invoke the getShortestPath() Method
       MadisonMapBackend backend = new MadisonMapBackend(data);
-      BIShortestPath path = backend.getMinimumSpanningTree("start");
+      IShortestPath path = backend.getMinimumSpanningTree("start");
   
     // Verify the Functionality of the getShortestPath() Method
-      assertEquals(path.getVertices().size(), 6);
-      assertEquals(path.getEdges().size(), 11);
+      assertEquals(6, path.getVertices().size());
+      assertEquals(11, path.getEdges().size());
     
   }
   

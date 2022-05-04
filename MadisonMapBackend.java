@@ -27,30 +27,11 @@ public class MadisonMapBackend implements IMadisonMapBackend {
    *        working map of Madison
    */
   public MadisonMapBackend(BIMapLoader mapData) {
-    // Initialize the "map" Field and Obtain the Collection of Vertices
-      map = new BMadisonMap();
-      if(mapData == null) { // Verify valid input
-        throw new IllegalArgumentException();
-      }
-      List<BIVertex> vertices = mapData.loadMap();
-      
-    /* Loop through the List<IVertex> object stored within the IMapLoader "mapData" object passed 
-     * as input. Insert each listed IVertex into the map, then access the collection of edges 
-     * stored in each IVertex and add these to the map as well. The program must employ two 
-     * enhanced for loops as the insertEdge() method dictates that both vertices must 
-     * first lie in the graph prior to the insertion of their connecting edge
-     */
-    for(BIVertex location : vertices) {
-      map.insertVertex(location.getName()); // Add vertex to map
+    // Initialize the "map" Field Through the Hashtable of Vertices
+    if(mapData == null) {
+      throw new IllegalArgumentException();
     }
-    
-    // Loop through internal IEdge collection and add each to map
-    for(BIVertex location : vertices) {
-      for(BIEdge edge : location.getEdges()) {
-        map.insertEdge(edge.getVertices()[0].getName(), edge.getVertices()[1].getName(), 
-            edge.getWeight());
-      }
-    }
+    map = new BMadisonMap(mapData.loadMap());
   }
   
   /**
@@ -66,7 +47,7 @@ public class MadisonMapBackend implements IMadisonMapBackend {
    *         shortest path between the desired vertices, the method will return "null"
    */
   @Override
-  public BIShortestPath getShortestPath(String start, String end) {
+  public IShortestPath getShortestPath(String start, String end) {
     // Retrieve the String list of location names included along the shortest path
       List<String> locationNames = map.shortestPath(start, end);
       
@@ -74,13 +55,13 @@ public class MadisonMapBackend implements IMadisonMapBackend {
      * Hashtable<String, IVertex> field; note, each location name functions as the "key" which 
      * maps to its corresponding IVertex "value"
      */
-    List<BIVertex> includedVertices = new LinkedList<>();
+    List<IVertex> includedVertices = new LinkedList<>();
     if(locationNames != null) {
       for(String name : locationNames) {
         includedVertices.add(map.getVertices().get(name));
       }
       // Construct and return an IShortestPath object from the computer IVertex list
-        return new BShortestPath(includedVertices);
+        return new ShortestPath(includedVertices);
     }
     return null; // Return null if not shortest path located
   }
@@ -97,7 +78,7 @@ public class MadisonMapBackend implements IMadisonMapBackend {
    *         from the start to end vertices.
    */
   @Override
-  public BIShortestPath getMinimumSpanningTree(String start) {
+  public IShortestPath getMinimumSpanningTree(String start) {
     return map.computeMinimumSpanningTree(start);
   }
   

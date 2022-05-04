@@ -1,20 +1,20 @@
 runTests: BackendDeveloperTests.class
 	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
-BackendDeveloperTests.class: BEdge.class BIEdge.class BIMadisonMap.class BMadisonMap.class BIMapLoader.class BMapLoader.class BIShortestPath.class BShortestPath.class BIVertex.class BVertex.class IMadisonMapBackend.class MadisonMapBackend.class GraphADT.class BackendDeveloperTests.java
+BackendDeveloperTests.class: Edge.class IEdge.class BIMadisonMap.class BMadisonMap.class BIMapLoader.class BMapLoader.class IShortestPath.class ShortestPath.class IVertex.class Vertex.class IMadisonMapBackend.class MadisonMapBackend.class GraphADT.class BackendDeveloperTests.java
 	javac -cp .:junit5.jar BackendDeveloperTests.java
 
-BIEdge.class: BIEdge.java
-	javac BIEdge.java
+IEdge.class: IEdge.java
+	javac IEdge.java
 
-BEdge.class: BEdge.java
-	javac BEdge.java
+Edge.class: Edge.java
+	javac Edge.java
 
-BIVertex.class: BIVertex.java
-	javac BIVertex.java
+IVertex.class: IVertex.java
+	javac IVertex.java
 
-BVertex.class: BVertex.java
-	javac BVertex.java
+Vertex.class: Vertex.java
+	javac Vertex.java
 
 BIMadisonMap.class: BIMadisonMap.java
 	javac BIMadisonMap.java
@@ -28,11 +28,11 @@ BIMapLoader.class: BIMapLoader.java
 BMapLoader.class: BMapLoader.java
 	javac BMapLoader.java
 
-BIShortestPath.class: BIShortestPath.java
-	javac BIShortestPath.java
+IShortestPath.class: IShortestPath.java
+	javac IShortestPath.java
 
-BShortestPath.class: BShortestPath.java
-	javac BShortestPath.java
+ShortestPath.class: ShortestPath.java
+	javac ShortestPath.java
 
 GraphADT.class: GraphADT.java
 	javac GraphADT.java

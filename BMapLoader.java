@@ -5,6 +5,7 @@
 // Lecture #: 002 @1:00pm
 // Notes to Grader: None
 
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,15 +25,15 @@ public class BMapLoader implements BIMapLoader {
    *         working implementation of the IMadisonMap class
    */
   @Override
-  public List<BIVertex> loadMap() {
+  public Hashtable<String, IVertex> loadMap() {
     // Develop the Graph Provided for the Shortest Path Activity; Simulates the Inputting of Data
       // Instantiate Vertices A-F
-        BVertex a = new BVertex("A");
-        BVertex b = new BVertex("B");
-        BVertex c = new BVertex("C");
-        BVertex d = new BVertex("D");
-        BVertex e = new BVertex("F");
-        BVertex f = new BVertex("E");
+        Vertex a = new Vertex("A");
+        Vertex b = new Vertex("B");
+        Vertex c = new Vertex("C");
+        Vertex d = new Vertex("D");
+        Vertex e = new Vertex("E");
+        Vertex f = new Vertex("F");
       
       // Connect Vertices Through the Specified Edges
         a.addConnectingEdge(b, 6);
@@ -48,13 +49,13 @@ public class BMapLoader implements BIMapLoader {
         f.addConnectingEdge(d, 1);
         
     // Develop a List of the IVertex Objects in the Graph
-      List<BIVertex> vertices = new LinkedList<>();
-      vertices.add(a);
-      vertices.add(b);
-      vertices.add(c);
-      vertices.add(d);
-      vertices.add(e);
-      vertices.add(f);
+      Hashtable<String, IVertex> vertices = new Hashtable<>();
+      vertices.put("A", a);
+      vertices.put("B", b);
+      vertices.put("C", c);
+      vertices.put("D", d);
+      vertices.put("E", e);
+      vertices.put("F", f);
       
     // Return the List of IVertex objects
       return vertices;

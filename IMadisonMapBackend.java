@@ -23,7 +23,7 @@ public interface IMadisonMapBackend {
    *         other of IEdge objects which contains all edges from the initial graph which lie 
    *         along the path from the start to end vertices.
    */
-  public BIShortestPath getShortestPath(String start, String end);
+  public IShortestPath getShortestPath(String start, String end);
     // Ensure length of String array is 2; index 0 = start vertex, index 1 = end vertex
   
   /**
@@ -36,6 +36,6 @@ public interface IMadisonMapBackend {
    *         objects which contains all edges from the initial graph which lie along the path 
    *         from the start to end vertices.
    */
-  public BIShortestPath getMinimumSpanningTree(String start);
+  public IShortestPath getMinimumSpanningTree(String start);
   
 }

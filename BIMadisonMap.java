@@ -22,7 +22,7 @@ public interface BIMadisonMap<T> extends GraphADT <T>{
      * @param start data for the start node
      * @return a
      */
-    public BIShortestPath computeMinimumSpanningTree(T start);
+    public IShortestPath computeMinimumSpanningTree(T start);
 
 
     /** An instance of this method takes in a starting and ending vertex and returns a Shortest Path object
@@ -31,7 +31,7 @@ public interface BIMadisonMap<T> extends GraphADT <T>{
      * @param end the ending vertex
      * @return a shortest path object which will contain an ordered list of vertices and edges visited
      */
-    public BIShortestPath computeShortestPath(BIVertex start, BIVertex end);
-    public Hashtable<T, BIVertex> getVertices();
+    public IShortestPath computeShortestPath(IVertex start, IVertex end);
+    public Hashtable<T, IVertex> getVertices();
 }
 

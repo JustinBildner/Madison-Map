@@ -12,18 +12,18 @@ import java.util.List;
  * @author Benjamin Miller
  *
  */
-public interface BIVertex {
+public interface IVertex {
   /* POSSIBLE FIELDS
    * private String name; // Name of the hotspot location
-   * private List<BIEdge> edges;  // List of all edges connected to the Vertex
+   * private List<IEdge> edges;  // List of all edges connected to the Vertex
    */
   
   // Returns the location name of the IVertex object
   public String getName();
 
   // Returns the list of BIEdge objects connected to the vertex
-  public List<BIEdge> getEdges();
+  public List<IEdge> getEdges();
   
   // Modifier method which enables one to add a new BIEdge to the list of connected edges
-  public void addConnectingEdge(BIVertex target, int weight);
+  public void addConnectingEdge(IVertex target, int weight);
 }

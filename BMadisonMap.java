@@ -11,15 +11,15 @@ import java.util.List;
 
 public class BMadisonMap implements BIMadisonMap<String> {
   
-  protected Hashtable<String, BIVertex> vertices; // holds graph verticies, key=data
+  protected Hashtable<String, IVertex> vertices; // holds graph verticies, key=data
   
-  public BMadisonMap() {
-    vertices = new Hashtable<>();
+  public BMadisonMap(Hashtable<String, IVertex> vertices) {
+    this.vertices = vertices;
   }
   
   @Override
   public boolean insertVertex(String data) {
-    vertices.put(data, new BVertex(data));
+    vertices.put(data, new Vertex(data));
     return true;
   }
 
@@ -33,15 +33,15 @@ public class BMadisonMap implements BIMadisonMap<String> {
   public boolean insertEdge(String source, String target, int weight) {
       if(source == null || target == null) 
           throw new NullPointerException("Cannot add edge with null source or target");
-      BIVertex sourceVertex = this.vertices.get(source);
-      BIVertex targetVertex = this.vertices.get(target);
+      IVertex sourceVertex = this.vertices.get(source);
+      IVertex targetVertex = this.vertices.get(target);
       if(sourceVertex == null || targetVertex == null) 
           throw new IllegalArgumentException("Cannot add edge with vertices that do not exist");
       if(weight < 0) 
           throw new IllegalArgumentException("Cannot add edge with negative weight");
       // handle cases where edge already exists between these verticies
-      for(BIEdge e : sourceVertex.getEdges())
-          if(e.getVertices()[1] == targetVertex) {
+      for(IEdge e : sourceVertex.getEdges())
+          if(e.getTarget() == targetVertex) {
               if(e.getWeight() == weight) return false; // edge already exists
               else e.setWeight(weight); // otherwise update weight of existing edge
               return true;
@@ -50,11 +50,37 @@ public class BMadisonMap implements BIMadisonMap<String> {
       sourceVertex.addConnectingEdge(targetVertex,weight);
       return true;
   }
-
+  
+  /*
   @Override
   public boolean removeEdge(String source, String target) {
     // TODO Auto-generated method stub
     return false;
+  }*/
+  /**
+   * Remove an edge from the graph.
+   * 
+   * @param source the data item contained in the source vertex for the edge
+   * @param target the data item contained in the target vertex for the edge
+   * @return true if the edge could be removed, false if it was not in the graph
+   * @throws IllegalArgumentException if either source or target or both are not in the graph
+   * @throws NullPointerException if either source or target or both are null
+   */
+  public boolean removeEdge(String source, String target) {
+      if(source == null || target == null) throw new NullPointerException("Cannot remove edge with null source or target");
+      IVertex sourceVertex = this.vertices.get(source);
+      IVertex targetVertex = this.vertices.get(target);
+      if(sourceVertex == null || targetVertex == null) throw new IllegalArgumentException("Cannot remove edge with vertices that do not exist");
+      // find edge to remove
+      IEdge removeEdge = null;
+      for(IEdge e : sourceVertex.getEdges())
+          if(e.getTarget() == targetVertex) 
+              removeEdge = e;
+      if(removeEdge != null) { // remove edge that is successfully found                
+          sourceVertex.getEdges().remove(removeEdge);
+          return true;
+      }
+      return false; // otherwise return false to indicate failure to find
   }
 
   @Override
@@ -78,9 +104,10 @@ public class BMadisonMap implements BIMadisonMap<String> {
   @Override
   public List<String> shortestPath(String start, String end) {
     List<String> locationNames = new LinkedList<>();
-    for(BIVertex v : vertices.values()) {
+    for(IVertex v : vertices.values()) {
       locationNames.add(v.getName());
     }
+    
     return locationNames;
   }
 
@@ -99,7 +126,7 @@ public class BMadisonMap implements BIMadisonMap<String> {
   @Override
   public int getEdgeCount() {
     int edgeCount = 0;
-    for(BIVertex v : vertices.values())
+    for(IVertex v : vertices.values())
         edgeCount += v.getEdges().size();
     return edgeCount;
   }
@@ -110,25 +137,25 @@ public class BMadisonMap implements BIMadisonMap<String> {
   }
 
   @Override
-  public BIShortestPath computeMinimumSpanningTree(String start) {
-    List<BIVertex> verticesList = new LinkedList<>();
-    List<BIEdge> edges = new LinkedList<>();
-    for(BIVertex vertex : vertices.values()) {
+  public IShortestPath computeMinimumSpanningTree(String start) {
+    List<IVertex> verticesList = new LinkedList<>();
+    List<IEdge> edges = new LinkedList<>();
+    for(IVertex vertex : vertices.values()) {
       verticesList.add(vertex);
       edges.addAll(vertex.getEdges());
     }
-    BShortestPath result = new BShortestPath(verticesList, edges);
+    ShortestPath result = new ShortestPath(verticesList, edges);
     return result;
   }
 
   @Override
-  public BIShortestPath computeShortestPath(BIVertex start, BIVertex end) {
+  public IShortestPath computeShortestPath(IVertex start, IVertex end) {
     // TODO Auto-generated method stub
     return null;
   }
 
   @Override
-  public Hashtable<String, BIVertex> getVertices() {
+  public Hashtable<String, IVertex> getVertices() {
     return vertices;
   }
   
