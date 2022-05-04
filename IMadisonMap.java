@@ -22,5 +22,6 @@ public interface IMadisonMap<T> extends GraphADT <T>{
      * @return a
      */
     public IShortestPath computeMinimumSpanningTree(T start);
+    public Hashtable<String, IVertex> getVertices();
 
 }
