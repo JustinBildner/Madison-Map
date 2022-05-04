@@ -14,7 +14,6 @@ public class Edge implements IEdge {
     private int weight; // corresponds to the distance between vertexA and vertexB
     private IVertex start; // contains the vertex that this edge starts from
     private IVertex target; // contains the vertex that this edge connects to
-    private boolean visited; // Changed to true if included in MST formed by Engineer
 
     /**
      * Constructor which both initializes the "weight" field to its corresponding parameter and
@@ -28,7 +27,6 @@ public class Edge implements IEdge {
         this.start = A;
         this.target = B;
         this.weight = weight;
-        this.visited = false;
     }
 
     /**
@@ -63,25 +61,6 @@ public class Edge implements IEdge {
     public int getWeight() {
         return weight;
     }
-
-    /**
-     * Modifier method which enables the user to toggle the "visited" state of the Edge object
-     */
-    @Override
-    public void setVisited(boolean status) {
-        visited = status;
-    }
-
-    /**
-     * Accessor method for the Edge "visited" field.
-     * @return true if the Edge proves is visited when constructing a shortest path, false otherwise
-     */
-    @Override
-    public boolean isVisited() {
-        return visited;
-    }
-
-
 
     /**
      * Allows the natural ordering of paths to be increasing with path distance.

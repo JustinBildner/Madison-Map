@@ -28,35 +28,50 @@ ShortestPath.class: ShortestPath.java IShortestPath.java
 run: FDBackendMadisonMap.class FrontendMadisonMap.class FDEdge.class FDIEdge.class FDIShortestPath.class FDIVertex.class FDShortestPath.class FDVertex.class
 	java FrontendMadisonMap
 
-runFrontendDeveloperTests: FrontendDeveloperTests.class
-	java -jar junit5.jar -cp . --scan-classpath -n FrontendDeveloperTests
+runTests: BackendDeveloperTests.class
+	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
-FrontendDeveloperTests.class: FDBackendMadisonMap.class FrontendMadisonMap.class FDEdge.class FDIEdge.class FDIShortestPath.class FDIVertex.class FDShortestPath.class FDVertex.class
-	javac -cp .:junit5.jar FrontendDeveloperTests.java
+BackendDeveloperTests.class: Edge.class IEdge.class BIMadisonMap.class BMadisonMap.class BIMapLoader.class BMapLoader.class IShortestPath.class ShortestPath.class GraphADT.class IMadisonMapBackend.class MadisonMapBackend.class BackendDeveloperTests.java
+	javac -cp .:junit5.jar BackendDeveloperTests.java
 
-FDBackendMadisonMap.class: FDBackendMadisonMap.java
-	javac FDBackendMadisonMap.java
+IEdge.class: IEdge.java
+	javac IEdge.java
 
-FrontendMadisonMap.class: FrontendMadisonMap.java
-	javac FrontendMadisonMap.java
+Edge.class: Edge.java
+	javac Edge.java
 
-FDEdge.class: FDEdge.java
-	javac FDEdge.java
+IVertex.class: IVertex.java
+	javac IVertex.java
 
-FDIEdge.class: FDIEdge.java
-	javac FDIEdge.java
+Vertex.class: Vertex.java
+	javac Vertex.java
 
-FDIShortestPath.class: FDIShortestPath.java
-	javac FDIShortestPath.java
+BIMadisonMap.class: BIMadisonMap.java
+	javac BIMadisonMap.java
 
-FDIVertex.class: FDIVertex.java
-	javac FDIVertex.java
+BMadisonMap.class: BMadisonMap.java
+	javac BMadisonMap.java
 
-FDShortestPath.class: FDShortestPath.java
-	javac FDShortestPath.java
+BIMapLoader.class: BIMapLoader.java
+	javac BIMapLoader.java
 
-FDVertex.class: FDVertex.java
-	javac FDVertex.java
+BMapLoader.class: BMapLoader.java
+	javac BMapLoader.java
+
+IShortestPath.class: IShortestPath.java
+	javac IShortestPath.java
+
+ShortestPath.class: ShortestPath.java
+	javac ShortestPath.java
+
+GraphADT.class: GraphADT.java
+	javac GraphADT.java
+
+IMadisonMapBackend.class: IMadisonMapBackend.java
+	javac IMadisonMapBackend.java
+
+MadisonMapBackend.class: MadisonMapBackend.java
+	javac MadisonMapBackend.java
 
 clean:
-	rm *.class
+	@rm *.class

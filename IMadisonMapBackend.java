@@ -1,4 +1,9 @@
-import java.util.List;
+// --== CS400 Project Three File Header ==--
+// Name: Benjamin Miller
+// CSL Username: benm
+// Email: bhmiller3@wisc.edu
+// Lecture #: 002 @1:00pm
+// Notes to Grader: None
 
 public interface IMadisonMapBackend {
   /* FIELDS (May Require Modification During Implementation)
@@ -18,11 +23,11 @@ public interface IMadisonMapBackend {
    *         other of IEdge objects which contains all edges from the initial graph which lie 
    *         along the path from the start to end vertices.
    */
-  public IShortestPath getShortestPath(String[] vertices);
+  public IShortestPath getShortestPath(String start, String end);
     // Ensure length of String array is 2; index 0 = start vertex, index 1 = end vertex
   
   /**
-   * Utilizes methods implemented by the Algorithm Engineer to obtain the shortest graphical 
+   * Utilizes methods implemented by the Algorithm Engineer to obtain the shortest graphical path
    * among a collection of IVertex objects.
    * @param vertices refers to a collection of String names of IVertex objects among which 
    *        the user seeks to calculate the shortest path on the IMadisonMapGraph.
@@ -31,6 +36,6 @@ public interface IMadisonMapBackend {
    *         objects which contains all edges from the initial graph which lie along the path 
    *         from the start to end vertices.
    */
-  public List<IVertex> getMinimumSpanningTree(String[] vertices);
+  public IShortestPath getMinimumSpanningTree(String start);
   
 }

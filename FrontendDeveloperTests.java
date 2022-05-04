@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
  * @author Nate Colburn
  *
  */
-class FrontendDeveloperTests extends FrontendMadisonMap {
+class FrontendDeveloperTests extends FDFrontendMadisonMap {
   FrontendMadisonMap testMap = new FrontendMadisonMap();
 
   /**
