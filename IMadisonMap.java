@@ -4,7 +4,7 @@
 // Email: bildner@wisc.edu
 // Lecture #: 002 @1:00pm
 // Notes to Grader: 
-import java.util.List;
+import java.util.Hashtable;
 
 
 /** An instance of a class that implements the following interface can be used to compute the shortest

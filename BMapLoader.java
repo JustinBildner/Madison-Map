@@ -16,7 +16,7 @@ import java.util.List;
  * @author Benjamin Miller
  *
  */
-public class BMapLoader implements BIMapLoader {
+public class BMapLoader implements IMapLoader {
   
   /**
    * Constructs a List<BIVertex> object which simulates the creation of the list of Madison 
