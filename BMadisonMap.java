@@ -9,7 +9,7 @@ import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BMadisonMap implements BIMadisonMap<String> {
+public class BMadisonMap implements IMadisonMap<String> {
   
   protected Hashtable<String, IVertex> vertices; // holds graph verticies, key=data
   
@@ -146,12 +146,6 @@ public class BMadisonMap implements BIMadisonMap<String> {
     }
     ShortestPath result = new ShortestPath(verticesList, edges);
     return result;
-  }
-
-  @Override
-  public IShortestPath computeShortestPath(IVertex start, IVertex end) {
-    // TODO Auto-generated method stub
-    return null;
   }
 
   @Override

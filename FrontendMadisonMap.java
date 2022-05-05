@@ -46,7 +46,7 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
    */
   @Override
   public void DisplayMinimumTree(String vertices) {
-    MadisonMapBackend map = new MadisonMapBackend();
+    MadisonMapBackend map = new MadisonMapBackend(new MapLoader());
     IShortestPath shortestPath = map.getMinimumSpanningTree(vertices);
     String pathNames = "";
     System.out.println(shortestPath.getEdges().size());
