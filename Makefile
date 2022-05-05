@@ -3,6 +3,11 @@ run: MadisonMap.class FrontendMadisonMap.class BackendMadisonMap.class
 runTests: runFrontendDeveloperTests runAlgorithmEngineerTests runBackendDeveloperTests runDataWranglerTests
 	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
+runFrontendDeveloperTests: FrontendDeveloperTests.class
+        java -jar junit5.jar -cp . --scan-classpath -n FrontendDeveloperTests
+FrontendDeveloperTests.class: MadisonMap.class MadisonMapBackend.class FrontendMadisonMap.class Edge.class ShortestPath.class Vertex.class Path.class 
+        javac -cp .:junit5.jar FrontendDeveloperTests.java
+
 runAlgorithmEngineerTests: MadisonMap.class AlgorithmEngineerTests.class
 	java -jar junit5.jar --class-path . --scan-classpath -n AlgorithmEngineerTests
 AlgorithmEngineerTests.class: MadisonMap.class AlgorithmEngineerTests.java
