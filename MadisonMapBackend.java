@@ -46,7 +46,7 @@ public class MadisonMapBackend implements IMadisonMapBackend {
       throw new IllegalArgumentException();
     }
     try {
-       map = new MadisonMap(mapData.loadMap());
+       map = new BMadisonMap(mapData.loadMap());
     }
     catch(FileNotFoundException e) {
        System.out.println("Error: Invalid File Path");
