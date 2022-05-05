@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 /**
  * Tests the implementation of MadisonMap for
  * Project Three: the implementation of Dijsktra's Shortest Path algorithm.
+ * @author justinbildner
  */
 public class AlgorithmEngineerTests {
 

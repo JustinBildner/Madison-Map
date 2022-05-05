@@ -3,7 +3,10 @@
 // CSL Username: bildner
 // Email: bildner@wisc.edu
 // Lecture #: 002 @1:00pm
-// Notes to Grader: 
+// Notes to Grader:
+/** Interface for MadisonMap
+ * @author justinbildner
+ */
 import java.util.Hashtable;
 
 

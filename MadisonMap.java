@@ -1,8 +1,19 @@
 import java.util.*;
 
+/**
+ * Working implementation of the IMadisonMap interface which constructs takes in a Hashtable
+ * graph of vertices. This class implement a shortest path using Djikstra's algorithm as well as
+ * a minimum spanning tree using Primm's algorithm for the given hashtable graph of vertices
+ * @author Justin Bildner
+ */
 public class MadisonMap implements IMadisonMap<String> {
 
     public Hashtable<String, IVertex> vertices; // holds graph verticies, key=data
+
+    /**
+     * Constructor that takes in a hashtable and sets the global field Hashtable to that
+     * @param vertices given Hashtable of vertices created by MapLoader
+     */
     public MadisonMap(Hashtable<String, IVertex> vertices) {
         this.vertices = vertices;
     }
@@ -31,15 +42,12 @@ public class MadisonMap implements IMadisonMap<String> {
             pq.add(tE.getTarget().getEdges().get(i));
         }
 
-//        pq.addAll(tE.getTarget().getEdges());
-
         visited.add(tE.getTarget());
 
         //While loop until all vertices are found
         while(edgesTraversed.size() < getVertexCount()-1){
 
             tE = pq.poll();
-
 
             //Go through every edge that is encounters checking to see if it should be added to Priority Queue
             for(int i = 0; i < tE.getTarget().getEdges().size(); i++){
@@ -156,13 +164,11 @@ public class MadisonMap implements IMadisonMap<String> {
         pq.add(tP);
         //List of vertices visited to keep track
         List<IVertex> visited = new ArrayList<>();
-//        Path eTP;
 
         //While loop until the shortest path found between start and end is found
         while(pq.isEmpty() == false){
             //End vertex has been found
             if(tP.end.getName().equals(end)) {
-//                tP.visited = visited;
                 return tP;
             }
             //Go through every edge that is encounters checking to see if shortest path to vertices has been found yet
@@ -174,13 +180,8 @@ public class MadisonMap implements IMadisonMap<String> {
             //After a vertex has been visited and all its connecting vertices discovered it's added to the list to not be looked at again
             visited.add(tP.end);
             //Change temp path to the shortest path from the priority queue
-//            eTP = tP;
             tP = pq.poll();
-//            for(int i = 0; i < tP.end.getEdges().size(); i++){
-//                if(tP.end == ((Edge)eTP.end.getEdges().get(i)).target){
-//                    pq.add(new Path(tP, (Edge) tP.end.getEdges().get(i)));
-//                }
-//            }
+
         }
         //When there is no path between the start and end nodes then NoSuchElementException will be thrown
         throw new NoSuchElementException();
