@@ -33,8 +33,12 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
       walkingDistance += shortestPath.getEdges().get(i).getWeight(); // Calculate walking distance
     }
     // pathNames += start + " --> " + shortestPath.getEdges().get(0).getName() + " --> " + end;
-    pathNames += start + " --> " + end;
-    pathNames = pathNames.substring(0, pathNames.length()); // Trim the last " to " off the end
+    for (int i = 0; i < shortestPath.getEdges().size(); i++) {
+      pathNames += shortestPath.getVertices().get(i).getName();
+      pathNames += " --> ";
+    }
+    pathNames += end;
+    // pathNames = pathNames.substring(0, pathNames.length()); // Trim the last " to " off the end
     System.out.println("The shortest path from " + start + " to " + end + " is: " + pathNames);
     System.out.println("The walking time is: " + walkingDistance + " minute");
   }
