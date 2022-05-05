@@ -75,7 +75,7 @@ public class MapLoader implements IMapLoader {
 	 * @return a list of IVertex objects
 	 * @throws FileNotFoundException when there is not a .tsv file stored at the location of path
 	 */
-	public List<String> loadMapList(String path) throws FileNotFoundException {
+	public List<IVertex> loadMapList(String path) throws FileNotFoundException {
 		ArrayList<IVertex> vertices =new ArrayList<IVertex>();
 	        Hashtable<String, IVertex> vertexTable = this.loadMap(path);
 
