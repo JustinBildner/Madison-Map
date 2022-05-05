@@ -70,50 +70,57 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
    * Runs the program
    */
   public static void main(String[] args) {
-    String start = "";
-    String end = "";
-    FrontendMadisonMap map = new FrontendMadisonMap();
-    System.out.println("Welcome to Madison Map!");
-    System.out.println("-----------------------");
-    System.out.println("Please choose an option:");
-    System.out.println("(1) Display the shortest path between two hotspots");
-    System.out.println("(2) Display a minimum spanning tree of all the hotspots");
-    Scanner in = new Scanner(System.in);
-    String s1 = in.nextLine();
+    String choice = "";
+    System.out.println("\nWelcome to Madison Map!");
+    while (!choice.equals("3")) {
+      choice = "";
+      String start = "";
+      String end = "";
+      FrontendMadisonMap map = new FrontendMadisonMap();
+      System.out.println("-----------------------");
+      System.out.println("Please choose an option:");
+      System.out.println("(1) Display the shortest path between two hotspots");
+      System.out.println("(2) Display a minimum spanning tree of all the hotspots");
+      System.out.println("(3) Quit");
+      Scanner in = new Scanner(System.in);
+      choice = in.nextLine();
+      if(choice.equals("3"))
+        break;
+      // Display shortest Path
+      if (choice.equals("1")) {
+        System.out.println("Our hotspots include: \nMemorial Union\n" + "Bascom Hill\n"
+            + "Chadbourne Hall\n" + "Nicholas Recreation Center\n" + "Kohl Center\n"
+            + "Lowell Center\n" + "Langdon & Lake\n" + "University Book Store\n"
+            + "State Street Brats\n" + "Le C's\n" + "Danny's Pub\n" + "Parthenon Gyros\n"
+            + "Ian's Pizza\n" + "Wisconsin State Capitol\n" + "Tornado Steak House\n"
+            + "Madison Concourse Hotel\n" + "RED\n" + "Basset Street Brunch\n"
+            + "Witte Residence Hall\n" + "Washington & Broom\n" + "Washington & Basset\n"
+            + "Lake & University");
+        System.out.println("\nEnter start location:");
+        start = in.nextLine();
+        System.out.println("\nEnter destination:");
+        end = in.nextLine();
+        map.DisplayShortestPath(start, end); // Calls the method with the specified start and end
 
-    // Display shortest Path
-    if (s1.equals("1")) {
-      System.out.println(
-          "Our hotspots include: \nMemorial Union\n" + "Bascom Hill\n" + "Chadbourne Hall\n"
-              + "Nicholas Recreation Center\n" + "Kohl Center\n" + "Lowell Center\n"
-              + "Langdon & Lake\n" + "University Book Store\n" + "State Street Brats\n" + "Le C's\n"
-              + "Danny's Pub\n" + "Parthenon Gyros\n" + "Ian's Pizza\n"
-              + "Wisconsin State Capitol\n" + "Tornado Steak House\n" + "Madison Concourse Hotel\n"
-              + "RED\n" + "Basset Street Brunch\n" + "Witte Residence Hall\n"
-              + "Washington & Broom\n" + "Washington & Basset\n" + "Lake & University");
-      System.out.println("\nEnter start location:");
-      start = in.nextLine();
-      System.out.println("\nEnter destination:");
-      end = in.nextLine();
-      map.DisplayShortestPath(start, end); // Calls the method with the specified start and end
-
-      // Display MST
-    } else if (s1.equals("2")) {
-      String startingSpot = new String();
-      System.out.println(
-          "Our hotspots include: \nMemorial Union\n" + "Bascom Hill\n" + "Chadbourne Hall\n"
-              + "Nicholas Recreation Center\n" + "Kohl Center\n" + "Lowell Center\n"
-              + "Langdon & Lake\n" + "University Book Store\n" + "State Street Brats\n" + "Le C's\n"
-              + "Danny's Pub\n" + "Parthenon Gyros\n" + "Ian's Pizza\n"
-              + "Wisconsin State Capitol\n" + "Tornado Steak House\n" + "Madison Concourse Hotel\n"
-              + "RED\n" + "Basset Street Brunch\n" + "Witte Residence Hall\n"
-              + "Washington & Broom\n" + "Washington & Basset\n" + "Lake & University");
-      System.out.println("\nEnter start location:");
-      startingSpot = in.nextLine();
-      map.DisplayMinimumTree(startingSpot); // Calls the method with the specified hotspots
-    } else {
-      System.out.println("Invalid Input, please try again");
+        // Display MST
+      } else if (choice.equals("2")) {
+        String startingSpot = new String();
+        System.out.println("Our hotspots include: \nMemorial Union\n" + "Bascom Hill\n"
+            + "Chadbourne Hall\n" + "Nicholas Recreation Center\n" + "Kohl Center\n"
+            + "Lowell Center\n" + "Langdon & Lake\n" + "University Book Store\n"
+            + "State Street Brats\n" + "Le C's\n" + "Danny's Pub\n" + "Parthenon Gyros\n"
+            + "Ian's Pizza\n" + "Wisconsin State Capitol\n" + "Tornado Steak House\n"
+            + "Madison Concourse Hotel\n" + "RED\n" + "Basset Street Brunch\n"
+            + "Witte Residence Hall\n" + "Washington & Broom\n" + "Washington & Basset\n"
+            + "Lake & University");
+        System.out.println("\nEnter start location:");
+        startingSpot = in.nextLine();
+        map.DisplayMinimumTree(startingSpot); // Calls the method with the specified hotspots
+      } else {
+        System.out.println("Invalid Input, please try again");
+      }
     }
+    System.out.println("Thanks for using Madison Map!");
   }
 }
 
