@@ -23,7 +23,7 @@ public class AlgorithmEngineerTests {
     public void createGraph() {
         IMapLoader mapLoader = new IMapLoader();
         Hashtable<String, IVertex> locations = new Hashtable<>();
-        map = new MadisonMap(mapLoader.loadMap("Hot"));
+        map = new MadisonMap(mapLoader.loadMap());
 
 
 
