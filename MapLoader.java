@@ -19,11 +19,11 @@ public class MapLoader implements IMapLoader {
 	 * @throws FileNotFoundException when there is not a .tsv file stored at the location of path
 	 */
 	@Override
-	public Hashtable<String, IVertex> loadMap(String path) throws FileNotFoundException {
-		File file = new File(path);
+	public Hashtable<String, IVertex> loadMap() throws FileNotFoundException {
+		File file = new File("hotSpots.tsv");
 
 		if (!file.exists()) {
-			throw new FileNotFoundException("File at " + path + " does not Exist");
+			throw new FileNotFoundException("File at hotSpots.tsv does not Exist");
 		}
 
 		Scanner scanner = new Scanner(file);
@@ -75,9 +75,9 @@ public class MapLoader implements IMapLoader {
 	 * @return a list of IVertex objects
 	 * @throws FileNotFoundException when there is not a .tsv file stored at the location of path
 	 */
-	public List<IVertex> loadMapList(String path) throws FileNotFoundException {
-		ArrayList<IVertex> vertices =new ArrayList<IVertex>();
-	        Hashtable<String, IVertex> vertexTable = this.loadMap(path);
+	public List<IVertex> loadMapList() throws FileNotFoundException {
+		ArrayList<IVertex> vertices = new ArrayList<IVertex>();
+	        Hashtable<String, IVertex> vertexTable = this.loadMap();
 
 		// Puts all of the vertices stored in the HashTable into an ArrayList
 		for (IVertex v : vertexTable.values()) {

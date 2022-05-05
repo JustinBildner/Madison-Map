@@ -16,9 +16,9 @@ class DataWranglerTests {
 	void NonExistentFile() {
 		try {
 			MapLoader ml = new MapLoader();
-			ml.loadMap("this file does not exist");
-			fail("FileNotFoundException was not thrown");
+			ml.loadMap();
 		} catch (FileNotFoundException fnfe) {
+			fail("FileNotFoundException was thrown");
 		}
 	}
 
@@ -29,7 +29,7 @@ class DataWranglerTests {
 	void loadsAllVertices() {
 		MapLoader ml = new MapLoader();
 		try {
-			List<IVertex> vertices = ml.loadMapList("/Users/noahjillson/Desktop/CS 400/P03/src/hotSpots.tsv");
+			List<IVertex> vertices = ml.loadMapList();
 			assertEquals(vertices.size(), 22, "Improper number of vertices loaded");
 		} catch (Exception e) {
 			fail("An Exception with the following message was thrown: " + e.getMessage());
@@ -47,7 +47,7 @@ class DataWranglerTests {
 	void edgeReferencesMatchVertexReferences() {
 		MapLoader ml = new MapLoader();
 		try {
-			List<IVertex> vertices = ml.loadMapList("/Users/noahjillson/Desktop/CS 400/P03/src/hotSpots.tsv");
+			List<IVertex> vertices = ml.loadMapList();
 			assertEquals(vertices.get(1), vertices.get(10).getEdges().get(1).getTarget(),
 					"Vertex " + vertices.get(1).getName() + " and Vertex "
 							+ vertices.get(10).getEdges().get(1).getTarget() + " do no share the same reference");
@@ -64,7 +64,7 @@ class DataWranglerTests {
 	void vertexesWithSpacesAndAmpersands() {
 		MapLoader ml = new MapLoader();
 		try {
-			List<IVertex> vertices = ml.loadMapList("/Users/noahjillson/Desktop/CS 400/P03/src/hotSpots.tsv");
+			List<IVertex> vertices = ml.loadMapList();
 			assertEquals("Witte Residence Hall", vertices.get(0).getName(),
 					"The space in the name did not load properly");
 			assertEquals("Langdon & Lake", vertices.get(1).getName(), "The & in the name did not load properly");
@@ -81,7 +81,7 @@ class DataWranglerTests {
 	void allEdgesLoaded() {
 		MapLoader ml = new MapLoader();
 		try {
-			List<IVertex> vertices = ml.loadMapList("/Users/noahjillson/Desktop/CS 400/P03/src/hotSpots.tsv");
+			List<IVertex> vertices = ml.loadMapList();
 			// Witte at index 0
 			for (IVertex v : vertices) {
 				System.out.println(v.getName());
@@ -121,7 +121,7 @@ class DataWranglerTests {
 	void allEdgesLoadedForMostConnectedVertex() {
 		MapLoader ml = new MapLoader();
 		try {
-			List<IVertex> vertices = ml.loadMapList("/Users/noahjillson/Desktop/CS 400/P03/src/hotSpots.tsv");
+			List<IVertex> vertices = ml.loadMapList();
 			// Witte at index 0
 			for (IVertex v : vertices) {
 				System.out.println(v.getName());

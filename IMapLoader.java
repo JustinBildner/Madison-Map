@@ -14,7 +14,7 @@ public interface IMapLoader {
    * @return a Hashtable<String, IVertex> object denoting the desired vertices to include in the working 
    * implementation of the IMadisonMap object
    */
-  public Hashtable<String, IVertex> loadMap(String path) throws FileNotFoundException;
+  public Hashtable<String, IVertex> loadMap() throws FileNotFoundException;
 
 }
 
