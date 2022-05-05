@@ -19,10 +19,10 @@ public class BackendDeveloperTests {
   @Test
   public void testValidConstructorInput() {
     // Prepare Data to Instantiate a MadisonMapBackend Object
-      BIMapLoader data = new BMapLoader();
+      IMapLoader data = new BMapLoader();
     
     // Create MadisonMapBackend Object
-      MadisonMapBackend backend = new MadisonMapBackend(data);
+      MadisonMapBackend backend = new MadisonMapBackend(data, "test");
     
     // Verify Correct Traversal of Inputed Data to Create the IMadisonMap Object
       assertEquals(6, backend.map.getVertexCount());
@@ -58,11 +58,11 @@ public class BackendDeveloperTests {
   @Test
   public void testGetShortestPath() {
     // Prepare Data to Instantiate a MadisonMapBackend Object
-      BIMapLoader data = new BMapLoader();
+      IMapLoader data = new BMapLoader();
     
     // Create MadisonMapBackend Object and Invoke the getShortestPath() Method
-      MadisonMapBackend backend = new MadisonMapBackend(data);
-      IShortestPath path = backend.getShortestPath("start", "end");
+      MadisonMapBackend backend = new MadisonMapBackend(data, "test");
+      IShortestPath path = backend.getShortestPathTest("start", "end");
     
     // Verify the Functionality of the getShortestPath() Method
       assertEquals(6, path.getVertices().size());
@@ -78,17 +78,17 @@ public class BackendDeveloperTests {
   @Test
   public void testModifiedShortestPath() {
     // Prepare Data to Instantiate a MadisonMapBackend Object
-      BIMapLoader data = new BMapLoader();
+      IMapLoader data = new BMapLoader();
   
     // Create MadisonMapBackend Object
-      MadisonMapBackend backend = new MadisonMapBackend(data);
+      MadisonMapBackend backend = new MadisonMapBackend(data, "test");
       
     // Remove Edges to Ensure Correct New Path Created
       backend.map.getVertices().get("A")
         .addConnectingEdge(backend.map.getVertices().get("F"), 1);
       
     // Invoke the getShortestPath() Method and Verify its Functionality
-      IShortestPath path = backend.getShortestPath("start", "end");
+      IShortestPath path = backend.getShortestPathTest("start", "end");
       assertEquals(6, path.getVertices().size());
       assertEquals(2, path.getEdges().size());
   }
@@ -102,11 +102,11 @@ public class BackendDeveloperTests {
   @Test
   public void testGetMinimumSpanningTree() {
     // Prepare Data to Instantiate a MadisonMapBackend Object
-      BIMapLoader data = new BMapLoader();
+      IMapLoader data = new BMapLoader();
   
     // Create MadisonMapBackend Object and Invoke the getShortestPath() Method
-      MadisonMapBackend backend = new MadisonMapBackend(data);
-      IShortestPath path = backend.getMinimumSpanningTree("start");
+      MadisonMapBackend backend = new MadisonMapBackend(data, "test");
+      IShortestPath path = backend.getMinimumSpanningTreeTest("start");
   
     // Verify the Functionality of the getShortestPath() Method
       assertEquals(6, path.getVertices().size());

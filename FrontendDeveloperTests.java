@@ -13,11 +13,11 @@ import org.junit.jupiter.api.Test;
 
 /**
  * This class uses JUnit tests to test the functionality of the FrontendMadisonMap class
- *
+ * 
  * @author Nate Colburn
  *
  */
-class FrontendDeveloperTests extends FDFrontendMadisonMap {
+class FrontendDeveloperTests extends FrontendMadisonMap {
   FrontendMadisonMap testMap = new FrontendMadisonMap();
 
   /**
@@ -38,11 +38,10 @@ class FrontendDeveloperTests extends FDFrontendMadisonMap {
    */
   @Test
   public void test2() {
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(new String[19]));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(new String[] {"1", "2", "3", "4", "5"}));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(new String[] {"", "", "", "", ""}));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(new String[] {"one"}));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(new String[] {"fsdfsdfsd", "gfsdgfds"}));
+    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("1"));
+    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(""));
+    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("one"));
+    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("fsdfsdfsd"));
   }
 
   /**
@@ -63,13 +62,13 @@ class FrontendDeveloperTests extends FDFrontendMadisonMap {
 
   /**
    * Tests to see if the DisplayShortestPath method and the DisplayMinimumTree method throw any
-   * exceptions when given the same input
+   * exceptions when given similar input
    */
   @Test
   public void test5() {
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(new String[] {"1", "2"}));
+    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("1"));
     assertDoesNotThrow(() -> testMap.DisplayShortestPath("1", "2"));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(new String[] {"start", "end"}));
+    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("start"));
     assertDoesNotThrow(() -> testMap.DisplayShortestPath("start", "end"));
 
   }
