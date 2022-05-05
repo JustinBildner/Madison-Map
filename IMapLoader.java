@@ -15,6 +15,5 @@ public interface IMapLoader {
    * implementation of the IMadisonMap object
    */
   public Hashtable<String, IVertex> loadMap() throws FileNotFoundException;
-
 }
 

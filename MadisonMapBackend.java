@@ -5,6 +5,7 @@
 // Lecture #: 002 @1:00pm
 // Notes to Grader: None
 
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +32,12 @@ public class MadisonMapBackend implements IMadisonMapBackend {
     if(mapData == null) {
       throw new IllegalArgumentException();
     }
-    map = new MadisonMap(mapData.loadMap());
+    try {
+       map = new MadisonMap(mapData.loadMap());
+    }
+    catch(FileNotFoundException e) {
+       System.out.println("Error: Invalid File Path");
+    }
   }
 
   public MadisonMapBackend(IMapLoader mapData, String test) {
@@ -39,7 +45,12 @@ public class MadisonMapBackend implements IMadisonMapBackend {
     if(mapData == null) {
       throw new IllegalArgumentException();
     }
-    map = new BMadisonMap(mapData.loadMap());
+    try {
+       map = new BMadisonMap(mapData.loadMap());
+    }
+    catch(FileNotFoundException e) {
+       System.out.println("Error: Invalid File Path");
+    }
   }  
   /**
    * Utilizes the shortestPath() method implemented by the Algorithm Engineer to obtain the 
@@ -89,8 +100,7 @@ public class MadisonMapBackend implements IMadisonMapBackend {
     return map.computeMinimumSpanningTree(start);
   }
 
-public IShortestPath getShortestPathTest(IMapLoader mapData, String start, String end) {
-    map = new BMadisonMap(mapData.loadMap());
+  public IShortestPath getShortestPathTest(String start, String end) {
     // Retrieve the String list of location names included along the shortest path
       List<String> locationNames = map.shortestPath(start, end);
       
@@ -109,10 +119,8 @@ public IShortestPath getShortestPathTest(IMapLoader mapData, String start, Strin
     return null; // Return null if not shortest path located
   }
 
-  public IShortestPath getMinimumSpanningTreeTest(IMapLoader mapData, String start) {
-    map = new BMadisonMap(mapData.loadMap());
+  public IShortestPath getMinimumSpanningTreeTest(String start) {
     return map.computeMinimumSpanningTree(start);
-  }
-  
+  }  
   
 }

@@ -1,0 +1,23 @@
+Current Vertex	Vertex	Weight	Vertex	Weight	Vertex	Weight	Vertex	Weight	Vertex	Weight
+Memorial Union	Bascom Hill	500	Langdon & Lake	1000						
+Bascom Hill	Memorial Union	500	Chadbourne Hall	500						
+Chadbourne Hall	Nicholas Recreation Center	1350	Bascom Hill	500						
+Nicholas Recreation Center	Witte Residence Hall	500	Kohl Center	650	Chadbourne Hall	1350				
+Kohl Center	Witte Residence Hall	450	Nicholas Recreation Center	650						
+Lowell Center	Langdon & Lake	500	Parthenon Gyros	2000						
+Langdon & Lake	University Book Store	500	Memorial Union	1000	Lowell Center	500				
+University Book Store	Langdon & Lake	500	State Street Brats	500						
+State Street Brats	University Book Store	500	Le C's	1300						
+Le C's	State Street Brats	1300	Danny's Pub	20	Basset Street Brunch	800				
+Danny's Pub	Le C's	20	Parthenon Gyros	650	Lake & University	2050	Basset Street Brunch	800		
+Parthenon Gyros	Danny's Pub	650	Ian's Pizza	750	RED	1450	Lowell Center	2000		
+Ian's Pizza	Danny's Pub	750	Wisconsin State Capitol	1000	Tornado Stake House	1800	RED	1600	Madison Concourse Hotel	300
+Wisconsin State Capitol	Ian's Pizza	1000	Tornado Stake House	1000	RED	1500				
+Tornado Stake House	Wisconsin State Capitol	1000	Madison Concourse Hotel	5250	RED	1050				
+Madison Concourse Hotel	Ian's Pizza	300	Wisconsin State Capitol	600						
+RED	Tornado Stake House	1050	Parthenon Gyros	1450	Washington & Broom	450	Ian's Pizza	1550		
+Basset Street Brunch	Parthenon Gyros	1500	Washington & Basset	1300	Lake & University	1450				
+Witte Residence Hall	Kohl Center	450	Nicholas Recreation Center	500	Basset Street Brunch	1250				
+Washington & Broom	RED	450	Danny's Pub	1450						
+Washington & Basset	RED	1000								
+Lake & University	University Book Store	700	Witte Residence Hall	550

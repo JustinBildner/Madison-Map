@@ -15,7 +15,7 @@ import java.util.Scanner;
  * @author Nate Colburn
  *
  */
-public class FrontendMadisonMap implements IFrontendMadisonMap {
+public class FDFrontendMadisonMap implements IFrontendMadisonMap {
 
   /**
    * This method displays the shortest path from one point to another

@@ -62,7 +62,7 @@ public class BackendDeveloperTests {
     
     // Create MadisonMapBackend Object and Invoke the getShortestPath() Method
       MadisonMapBackend backend = new MadisonMapBackend(data, "test");
-      IShortestPath path = backend.getShortestPathTest(data, "start", "end");
+      IShortestPath path = backend.getShortestPathTest("start", "end");
     
     // Verify the Functionality of the getShortestPath() Method
       assertEquals(6, path.getVertices().size());
@@ -88,9 +88,9 @@ public class BackendDeveloperTests {
         .addConnectingEdge(backend.map.getVertices().get("F"), 1);
       
     // Invoke the getShortestPath() Method and Verify its Functionality
-      IShortestPath path = backend.getShortestPathTest(data, "start", "end");
+      IShortestPath path = backend.getShortestPathTest("start", "end");
       assertEquals(6, path.getVertices().size());
-      assertEquals(1, path.getEdges().size());
+      assertEquals(2, path.getEdges().size());
   }
   
   /**
@@ -106,7 +106,7 @@ public class BackendDeveloperTests {
   
     // Create MadisonMapBackend Object and Invoke the getShortestPath() Method
       MadisonMapBackend backend = new MadisonMapBackend(data, "test");
-      IShortestPath path = backend.getMinimumSpanningTreeTest(data, "start");
+      IShortestPath path = backend.getMinimumSpanningTreeTest("start");
   
     // Verify the Functionality of the getShortestPath() Method
       assertEquals(6, path.getVertices().size());

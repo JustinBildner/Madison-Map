@@ -14,12 +14,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AlgorithmEngineerTests {
 
     private MadisonMap graph;
+    private MadisonMap map;
 
     /**
      * Instantiate example graph.
      */
     @BeforeEach
     public void createGraph() {
+        IMapLoader mapLoader = new IMapLoader();
+        Hashtable<String, IVertex> locations = new Hashtable<>();
+        map = new MadisonMap(mapLoader.loadMap("Hot"));
+
+
+
         Hashtable<String, IVertex> vertices = new Hashtable<>();
         graph = new MadisonMap(vertices);
         // insert vertices A-F

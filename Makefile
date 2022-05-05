@@ -1,6 +1,7 @@
 run: MadisonMap.class FrontendMadisonMap.class BackendMadisonMap.class
 
 runTests: runFrontendDeveloperTests runAlgorithmEngineerTests runBackendDeveloperTests runDataWranglerTests
+	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
 runAlgorithmEngineerTests: MadisonMap.class AlgorithmEngineerTests.class
 	java -jar junit5.jar --class-path . --scan-classpath -n AlgorithmEngineerTests
