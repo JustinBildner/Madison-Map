@@ -1,5 +1,5 @@
-run: MadisonMap.class FrontendMadisonMap.class BackendMadisonMap.class MapLoader.class Edge.class Vertex.class ShortestPath.class Path.class
-
+run: MadisonMap.class FrontendMadisonMap.class MadisonMapBackend.class MapLoader.class Edge.class Vertex.class ShortestPath.class Path.class
+	java FrontendMadisonMap
 runTests: runFrontendDeveloperTests runAlgorithmEngineerTests runBackendDeveloperTests runDataWranglerTests
 	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
