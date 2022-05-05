@@ -7,6 +7,11 @@ runFrontendDeveloperTests: FrontendDeveloperTests.class
 	java -jar junit5.jar -cp . --scan-classpath -n FrontendDeveloperTests
 FrontendDeveloperTests.class: MadisonMap.class MadisonMapBackend.class FrontendMadisonMap.class Edge.class ShortestPath.class Vertex.class Path.class 
 	javac -cp .:junit5.jar FrontendDeveloperTests.java
+FrontendMadisonMap.class: FrontendMadisonMap.java IFrontendMadisonMap.class
+	javac FrontendMadisonMap.java
+IFrontendMadisonMap.class: IFrontendMadisonMap.java
+	javac IFrontendMadisonMap.java
+
 
 runDataWranglerTestsTests: DataWranglerTests.class
 	java -jar junit5.jar -cp . --scan-classpath -n DataWranglerTests
