@@ -13,7 +13,7 @@ IFrontendMadisonMap.class: IFrontendMadisonMap.java
 	javac IFrontendMadisonMap.java
 
 
-runDataWranglerTestsTests: DataWranglerTests.class
+runDataWranglerTests: DataWranglerTests.class
 	java -jar junit5.jar -cp . --scan-classpath -n DataWranglerTests
 DataWranglerTests.class: DataWranglerTests.java Vertex.class IVertex.class Edge.class IEdge.class MapLoader.class
 	javac -cp .:junit5.jar DataWranglerTests.java
