@@ -102,9 +102,6 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
           + "Madison Concourse Hotel\n" + "Memorial Union Terrace");
       System.out.println("\nEnter start location:");
       startingSpot = in.nextLine();
-      System.out.println(
-          "Enter a starting locations");
-        startingSpot = in.nextLine();
       map.DisplayMinimumTree(startingSpot); // Calls the method with the specified hotspots
     } else {
       System.out.println("Invalid Input, please try again");
