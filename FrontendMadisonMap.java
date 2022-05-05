@@ -82,7 +82,7 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
       System.out.println("Our hotspots include: \nKohl Center\n" + "Witte Residence Hall\n"
           + "Chadbourne Residence Hall\n" + "Nicholas Recreation Center\n" + "Capital\n"
           + "Bascom Hill\n" + "Le C’s\n" + "Bassett Street Brunch club\n" + "University BookStore\n"
-          + "State Street Brats\n" + "Danny's Pub\n" + "Ian’s Pizza\n" + "Red\n" + "Target\n"
+          + "State Street Brats\n" + "Danny's Pub\n" + "Ian’s Pizza\n" + "Red\n"
           + "Tornado Steak house\n" + "Parthenon Gyros\n" + "Lowell Center\n"
           + "Madison Concourse Hotel\n" + "Memorial Union Terrace");
       System.out.println("\nEnter start location:");
@@ -97,7 +97,7 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
       System.out.println("Our hotspots include: \nKohl Center\n" + "Witte Residence Hall\n"
           + "Chadbourne Residence Hall\n" + "Nicholas Recreation Center\n" + "Capital\n"
           + "Bascom Hill\n" + "Le C’s\n" + "Bassett Street Brunch club\n" + "University BookStore\n"
-          + "State Street Brats\n" + "Danny's Pub\n" + "Ian’s Pizza\n" + "Red\n" + "Target\n"
+          + "State Street Brats\n" + "Danny's Pub\n" + "Ian’s Pizza\n" + "Red\n"
           + "Tornado Steak house\n" + "Parthenon Gyros\n" + "Lowell Center\n"
           + "Madison Concourse Hotel\n" + "Memorial Union Terrace");
       System.out.println("\nEnter start location:");
