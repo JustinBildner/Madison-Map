@@ -25,12 +25,12 @@ class FrontendDeveloperTests extends FrontendMadisonMap {
    */
   @Test
   public void test1() {
-    assertDoesNotThrow(() -> testMap.DisplayShortestPath("start", "end"));
-    assertDoesNotThrow(() -> testMap.DisplayShortestPath("randomnonsense---asdsdjadshdsajdsa",
-        "randomnonsense---asdsdjadshdsajdsa"));
-    assertDoesNotThrow(() -> testMap.DisplayShortestPath("", ""));
-    assertDoesNotThrow(() -> testMap.DisplayShortestPath("1", "1"));
-    assertDoesNotThrow(() -> testMap.DisplayShortestPath("112312321123", "123123123321"));
+    assertDoesNotThrow(() -> testMap.DisplayShortestPath("RED", "Kohl Center"));
+    assertDoesNotThrow(() -> testMap.DisplayShortestPath("Ian's Pizza",
+        "Witte Residence Hall"));
+    assertDoesNotThrow(() -> testMap.DisplayShortestPath("State Street Brats", "Memorial Union"));
+    assertDoesNotThrow(() -> testMap.DisplayShortestPath("Lowell Center", "University Book Store"));
+    assertDoesNotThrow(() -> testMap.DisplayShortestPath("Washington & Broom", "Washington & Basset"));
   }
 
   /**
@@ -38,10 +38,10 @@ class FrontendDeveloperTests extends FrontendMadisonMap {
    */
   @Test
   public void test2() {
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("1"));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree(""));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("one"));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("fsdfsdfsd"));
+    assertThrows(Exception.class, () -> testMap.DisplayMinimumTree("1"));
+    assertThrows(Exception.class, () -> testMap.DisplayMinimumTree(""));
+    assertThrows(Exception.class, () -> testMap.DisplayMinimumTree("one"));
+    assertThrows(Exception.class, () -> testMap.DisplayMinimumTree("fsdfsdfsd"));
   }
 
   /**
@@ -66,10 +66,10 @@ class FrontendDeveloperTests extends FrontendMadisonMap {
    */
   @Test
   public void test5() {
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("1"));
-    assertDoesNotThrow(() -> testMap.DisplayShortestPath("1", "2"));
-    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("start"));
-    assertDoesNotThrow(() -> testMap.DisplayShortestPath("start", "end"));
+    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("RED"));
+    assertDoesNotThrow(() -> testMap.DisplayShortestPath("RED", "Basset Street Brunch"));
+    assertDoesNotThrow(() -> testMap.DisplayMinimumTree("Witte Residence Hall"));
+    assertDoesNotThrow(() -> testMap.DisplayShortestPath("Witte Residence Hall", "Kohl Center"));
 
   }
 
