@@ -40,7 +40,7 @@ public class FrontendMadisonMap implements IFrontendMadisonMap {
     pathNames += end;
     // pathNames = pathNames.substring(0, pathNames.length()); // Trim the last " to " off the end
     System.out.println("The shortest path from " + start + " to " + end + " is: " + pathNames);
-    System.out.println("The walking time is: " + walkingDistance + " minute");
+    System.out.println("The walking distance is: " + walkingDistance + " feet");
   }
 
   /**
