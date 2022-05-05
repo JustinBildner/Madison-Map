@@ -33,14 +33,10 @@ ShortestPath.class: ShortestPath.java IShortestPath.java
 run: FDBackendMadisonMap.class FrontendMadisonMap.class FDEdge.class FDIEdge.class FDIShortestPath.class FDIVertex.class FDShortestPath.class FDVertex.class
 	java FrontendMadisonMap
 
-<<<<<<< HEAD
-BackendDeveloperTests.class: Edge.class IEdge.class BIMadisonMap.class BMadisonMap.class BIMapLoader.class BMapLoader.class IShortestPath.class ShortestPath.class GraphADT.class IMadisonMapBackend.class MadisonMapBackend.class BackendDeveloperTests.java
-=======
 runBackendDeveloperTests: BackendDeveloperTests.class
 	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
 BackendDeveloperTests.class: Edge.class IEdge.class IMadisonMap.class BMadisonMap.class IMapLoader.class BMapLoader.class IShortestPath.class ShortestPath.class GraphADT.class IMadisonMapBackend.class MadisonMapBackend.class BackendDeveloperTests.java
->>>>>>> a24f1efc58ac44552cfbc16da45ae4d80602afb2
 	javac -cp .:junit5.jar BackendDeveloperTests.java
 
 IMadisonMap.class: IMadisonMap.java
