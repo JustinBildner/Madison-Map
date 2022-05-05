@@ -1,12 +1,22 @@
-run: MadisonMap.class FrontendMadisonMap.class BackendMadisonMap.class
+run: MadisonMap.class FrontendMadisonMap.class BackendMadisonMap.class MapLoader.class Edge.class Vertex.class ShortestPath.class Path.class
 
 runTests: runFrontendDeveloperTests runAlgorithmEngineerTests runBackendDeveloperTests runDataWranglerTests
 	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
 runFrontendDeveloperTests: FrontendDeveloperTests.class
-        java -jar junit5.jar -cp . --scan-classpath -n FrontendDeveloperTests
+	java -jar junit5.jar -cp . --scan-classpath -n FrontendDeveloperTests
 FrontendDeveloperTests.class: MadisonMap.class MadisonMapBackend.class FrontendMadisonMap.class Edge.class ShortestPath.class Vertex.class Path.class 
-        javac -cp .:junit5.jar FrontendDeveloperTests.java
+	javac -cp .:junit5.jar FrontendDeveloperTests.java
+
+runDataWranglerTestsTests: DataWranglerTests.class
+	java -jar junit5.jar -cp . --scan-classpath -n DataWranglerTests
+DataWranglerTests.class: DataWranglerTests.java Vertex.class IVertex.class Edge.class IEdge.class MapLoader.class
+	javac -cp .:junit5.jar DataWranglerTests.java
+MapLoader.class: MapLoader.java IMapLoader.class
+	javac MapLoader.java
+IMapLoader.class: IMapLoader.java
+	javac IMapLoader.java
+
 
 runAlgorithmEngineerTests: MadisonMap.class AlgorithmEngineerTests.class
 	java -jar junit5.jar --class-path . --scan-classpath -n AlgorithmEngineerTests
