@@ -125,32 +125,33 @@ public class AlgorithmEngineerTests {
     }
 
     /**
-     * Checks the list of Vertices in the ShortestPath object making sure they are correct for the
-     * Minimum spanning tree computed using Primm's starting at Vertex A
+     * Checks the size of the list of edges and vertices in the ShortestPath object from the
+     * Minimum spanning tree computed using Primm's starting at an example location
+     * of State Street Brats
      */
     @Test
-    public void testMadisonMinTreeBrats() {
-        System.out.println(map.minTreeVert("State Street Brats").size());
-        System.out.println(map.minTreeEdge("State Street Brats").size());
-//        assertTrue(graph.minTreeVert("A").toString().equals(
-//            "[A, F, E, D, C, B, G]"
-//        ));
+    public void testMadisonMinTreeSize() {
+        assertTrue(map.minTreeVert("State Street Brats").size() == 22);
+        assertTrue(map.minTreeEdge("State Street Brats").size() == 21);
     }
 
     /**
-     * Checks the list of Vertices in the ShortestPath object making sure they are correct for the
-     * Minimum spanning tree computed using Primm's starting at Vertex A
+     * Checks the list of Vertices in the ShortestPath object making sure that all vertices in the
+     * map are there and only once in the correct order for the
+     * Minimum spanning tree computed using Primm's starting at Danny's Pub
      */
     @Test
     public void testMadisonMinTreeDanny() {
-
-        System.out.println(map.minTreeVert("Danny's Pub"));
-//        System.out.println(map.minTreeEdge("Danny's Pub"));
-                assertTrue(graph.minTreeVert("Danny's Pub").toString().equals(
-                    "[Danny's Pub, Le C's, Parthenon Gyros, Ian's Pizza, Madison Concourse Hotel, Wisconsin State Capitol, Basset Street Brunch, Basset Street Brunch, Tornado Stake House, RED, Washington & Broom, State Street Brats, University Book Store, Langdon & Lake, Lowell Center, Memorial Union, Bascom Hill, Chadbourne Hall, Washington & Basset, Washington & Basset, Nicholas Recreation Center, Witte Residence Hall]"));
+                assertTrue(map.minTreeVert("Danny's Pub").toString().equals("[Danny's Pub, Le C's, Parthenon Gyros, "
+                    + "Ian's Pizza, Madison Concourse Hotel, Wisconsin State Capitol, Basset Street Brunch, Basset Street Brunch, "
+                    + "Tornado Stake House, RED, Washington & Broom, State Street Brats, University Book Store, Langdon & Lake, "
+                    + "Lowell Center, Memorial Union, Bascom Hill, Chadbourne Hall, Washington & Basset, Washington & Basset, "
+                    + "Nicholas Recreation Center, Witte Residence Hall]"));
     }
 
-
+    /** This is a tester for the DataWrangler's MapLoader making sure that a hashtable containing all 22 vertices is computed
+     *
+     */
     @Test
     public void testForAllVertices() {
         MapLoader ml = new MapLoader();
@@ -162,91 +163,22 @@ public class AlgorithmEngineerTests {
         }
     }
 
-//    /**
-//     * Checks the distance/total weight cost from the vertex A to F.
-//     */
-//    @Test
-//    public void testPathCostAtoF() {
-//        assertTrue(graph.getPathCost("A", "F") == 3);
-//    }
-//
-//    /**
-//     * Checks the distance/total weight cost from the vertex A to D.
-//     */
-//    @Test
-//    public void testPathCostAtoD() {
-//        assertTrue(graph.getPathCost("A", "D") == 4);
-//    }
-//
-//    /**
-//     * Checks the ordered sequence of data within vertices from the vertex
-//     * A to D.
-//     */
-//    @Test
-//    public void testPathAtoD() {
-//        assertTrue(graph.shortestPath("A", "D").toString().equals(
-//            "[A, C, F, D]"
-//        ));
-//    }
-//
-//    /**
-//     * Checks the ordered sequence of data within vertices from the vertex
-//     * A to F.
-//     */
-//    @Test
-//    public void testPathAtoF() {
-//        assertTrue(graph.shortestPath("A", "F").toString().equals(
-//            "[A, C, F]"
-//        ));
-//    }
-//
-//
-//    /**
-//     * Checks the distance/total weight cost from the vertex A to E.
-//     */
-//    @Test
-//    public void testPathCostAtoE() {
-//        assertTrue(graph.getPathCost("A", "E") == 6);
-//    }
-//
-//    /**
-//     * Checks the ordered sequence of data within vertices from the vertex
-//     * A to E.
-//     */
-//    @Test
-//    public void testPathAtoE() {
-//        assertTrue(graph.shortestPath("A", "E").toString().equals(
-//            "[A, C, B, E]"
-//        ));
-//    }
-//
-//    /**
-//     * Checks the distance/total weight cost from the vertex B to F.
-//     */
-//    @Test
-//    public void testPathCostBtoF() {
-//        assertTrue(graph.getPathCost("B", "F") == 3);
-//    }
-//
-//    /**
-//     * Checks the Predessor to B along the shortest path from F to B.
-//     */
-//    @Test
-//    public void testPredecessorFtoB() {
-//        assertTrue(graph.dijkstrasShortestPath("F", "B").dataSequence.get(graph.dijkstrasShortestPath("F", "B").dataSequence.size()-2).equals("C"));
-//    }
-//
-//    /**
-//     * Checks the distance/total weight cost from the vertex E to B.
-//     */
-//    @Test
-//    public void testPathCostEtoB() {
-//        assertTrue(graph.getPathCost("E", "B") == 9);
-//    }
+    /**
+     * This is a tester for the DataWrangler's MapLoader ensuring that all the Edges loaded for two random vertices chosen
+     * which happens to be Lake & University and Ian's Pizza
+     */
+    @Test
+    void allEdgesLoadedForRandomVertex() {
+        MapLoader ml = new MapLoader();
+        try {
+            Hashtable<String, IVertex> vertices = ml.loadMap();
+            assertEquals(vertices.get("Lake & University").getEdges().size(), 2,
+                "Improper number of vertices loaded");
+            assertEquals(vertices.get("Ian's Pizza").getEdges().size(), 5,
+                "Improper number of vertices loaded");
+        } catch (Exception e) {
+            fail("An Exception with the following message was thrown: " + e.getMessage());
+        }
 
-
-
-
-
-
+    }
 }
