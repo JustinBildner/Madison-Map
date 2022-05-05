@@ -52,21 +52,14 @@ runBackendDeveloperTests: BackendDeveloperTests.class
 
 BackendDeveloperTests.class: Edge.class IEdge.class IMadisonMap.class BMadisonMap.class IMapLoader.class BMapLoader.class IShortestPath.class ShortestPath.class GraphADT.class IMadisonMapBackend.class MadisonMapBackend.class BackendDeveloperTests.java
 	javac -cp .:junit5.jar BackendDeveloperTests.java
-IMadisonMap.class: IMadisonMap.java
-	javac IMadisonMap.java
 BMadisonMap.class: BMadisonMap.java
 	javac BMadisonMap.java
-IMapLoader.class: IMapLoader.java
-	javac IMapLoader.java
 BMapLoader.class: BMapLoader.java
 	javac BMapLoader.java
-GraphADT.class: GraphADT.java
-	javac GraphADT.java
 IMadisonMapBackend.class: IMadisonMapBackend.java
 	javac IMadisonMapBackend.java
 MadisonMapBackend.class: MadisonMapBackend.java
 	javac MadisonMapBackend.java
-
 
 clean:
 	@rm *.class
